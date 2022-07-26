@@ -173,8 +173,8 @@
 </svelte:head>
 
 <Section column="wide">
-<div class="grid mtl">
-	<div>
+{#if place && ew}
+<div class="grid mtl"><div>
 		{#if place.parents[0]}
 		<span class="text-small">
 			{#each [...place.parents].reverse() as parent, i}
