@@ -217,7 +217,7 @@
 			{/if}
 	</div>
 	<div>
-		<span class="text-bold">Population</span>
+		<span class="text-bold">Population - prepared by Maire</span>
 		<br/>
 		<span class="text-big">{place.data.population.value['2011'].all.toLocaleString()}</span><br/>
 		{#if !overtime}
