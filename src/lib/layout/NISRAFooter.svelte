@@ -7,35 +7,23 @@
 
 <footer style="color: #ffffff; background-color: #00205b;">
 	<div class="col-wide" data-analytics="footer">
-		<a href="https://www.nisra.gov.uk/">
-			{#if theme == 'dark'}
-			<img
-				class="logo-img"
-				src="{assets}/img/nisra-logo-white-transparent-bkgrd.png"
-				alt="Northern Ireland Statistics and Research Agency" />
-			{:else}
-			<img
-				class="logo-img"
-				src="{assets}/img/nisra-logo-colour-transparent-bkgrd.png"
-				alt="Northern Ireland Statistics and Research Agency" />
-			{/if}
-		</a>
-        <div>
-			<h3>Links</h3><br>
-			<ul>
-				<li><a href="https://www.nidirect.gov.uk" class="link" style="color: #ffffff">NIDirect</a></li>
-				<li><a href="https://www.gov.uk/" class="link" style="color: #ffffff">GOV.UK</a></li>
-				<li><a href="http://www.ninis.nisra.gov.uk/" class="link" style="color: #ffffff">NINIS</a></li>
-			</ul>	
-			<h3>Follow NISRA</h3><br>
-			<ul> 
-				<li><a href="https://www.facebook.com/nisra.gov.uk" class="link" style="color: #ffffff">Facebook</a></li>
-				<li><a href="https://twitter.com/NISRA" class="link" style="color: #ffffff">Twitter</a></li>
-				<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
-			</ul>
+		<div style="width: 20%; float:left">
+				<h3>Links</h3><br>
+				<ul>
+					<li><a href="https://www.nidirect.gov.uk" class="link" style="color: #ffffff">NIDirect</a></li>
+					<li><a href="https://www.gov.uk/" class="link" style="color: #ffffff">GOV.UK</a></li>
+					<li><a href="http://www.ninis.nisra.gov.uk/" class="link" style="color: #ffffff">NINIS</a></li>
+				</ul>	
 		</div>
-		<hr style="border-top-color: {theme['muted']}" />
-		<div><br>
+		<div style="width: 80%; float:right">
+				<h3>Follow NISRA</h3><br>
+				<ul> 
+					<li><a href="https://www.facebook.com/nisra.gov.uk" class="link" style="color: #ffffff">Facebook</a></li>
+					<li><a href="https://twitter.com/NISRA" class="link" style="color: #ffffff">Twitter</a></li>
+					<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
+				</ul>
+		</div>
+		<div>
 			<ul>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
 				<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Cookies and privacy</a></li>
