@@ -23,11 +23,11 @@
 		<ul>
 			<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: {theme['text']}">Contact us</a></li>
 			<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: {theme['text']}">Cookies and privacy</a></li>
-			<li<a href="https://www.nisra.gov.uk/terms-and-conditions" class="link" style="color: {theme['text']}">Terms and conditions</a></li>
-			<li<a href="https://www.nisra.gov.uk//cookies" class="link" style="color: {theme['text']}">Cookies</a></li>
-			<li<a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: {theme['text']}">Privacy</a></li>
-			<li<a href="https://www.nisra.gov.uk/accessibility-statement-nisra" class="link" style="color: {theme['text']}">Accessibility Statement</a></li>
-				</ul>
+			<li><a href="https://www.nisra.gov.uk/terms-and-conditions" class="link" style="color: {theme['text']}">Terms and conditions</a></li>
+			<li><a href="https://www.nisra.gov.uk//cookies" class="link" style="color: {theme['text']}">Cookies</a></li>
+			<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: {theme['text']}">Privacy</a></li>
+			<li><a href="https://www.nisra.gov.uk/accessibility-statement-nisra" class="link" style="color: {theme['text']}">Accessibility Statement</a></li>
+		</ul>
 		<hr style="border-top-color: {theme['muted']}" />
 	</div>
 </footer>
