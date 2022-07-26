@@ -23,7 +23,7 @@
 					<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
 				</ul>
 		</div>
-		<div style = "padding-top: 10px"><br>
+		<div style="width: 20%; float:left">
 			<ul>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
 				<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Cookies and privacy</a></li>

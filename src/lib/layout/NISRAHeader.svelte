@@ -7,7 +7,7 @@
 	export let center = false;
 </script>
 
-<nav style="background-color: #ffffff">/
+<nav style="background-color: #ffffff">
   <div class="col-wide middle" class:center>
 		<a href="https://www.nisra.gov.uk/">
 			<picture>
