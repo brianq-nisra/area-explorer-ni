@@ -35,7 +35,7 @@
 			</ul>
 		</div>
 		<hr style="border-top-color: {theme['muted']}" />
-		<div></br>
+		<div><br>
 			<ul>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
 				<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Cookies and privacy</a></li>
