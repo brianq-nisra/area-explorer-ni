@@ -7,7 +7,7 @@
 	export let center = false;
 </script>
 
-<nav style="border-bottom-color: {theme['muted']}; {filled ? 'background-color: ' +  theme['background'] + ';' : ''}">
+<nav style="background-color: #00205b">/
   <div class="col-wide middle" class:center>
 		<a href="https://www.nisra.gov.uk/">
 			<picture>

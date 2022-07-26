@@ -7,7 +7,7 @@
 <style>
   .warning {
     color: white;
-    background-color: #00205b;
+    background-color: #3878c5;
     margin-bottom: 10px;
     padding: 8px 0;
     font-size: 1.1em;
