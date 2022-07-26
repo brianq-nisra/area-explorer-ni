@@ -11,13 +11,7 @@
   <div class="col-wide middle" class:center>
 		<a href="https://www.nisra.gov.uk/">
 			<picture>
-				{#if theme.name == 'dark'}
 				<img src="{assets}/img/nisra-full-name-stacked-white.svg" alt="Northern Ireland Statistics and Research Agency">
-				{:else if filled == true}
-				<img src="{assets}/img/nisra-full-name-stacked-colour.svg" alt="Northern Ireland Statistics and Research Agency">
-				{:else}
-				<img src="{assets}/img/nisra-full-name-stacked-colour.svg" alt="Northern Ireland Statistics and Research Agency">
-				{/if}
 			</picture>
 		</a>
   </div>
@@ -28,8 +22,8 @@
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		position: relative;
-		height: 46px;
-		margin-bottom: -46px;
+		height: 40px;
+		margin-bottom: -50px;
 		border-bottom: 1px solid #777;
 		z-index: 1;
 	}

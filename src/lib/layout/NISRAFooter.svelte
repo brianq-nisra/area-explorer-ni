@@ -21,23 +21,21 @@
 			{/if}
 		</a>
         <div>
-			<h2>Links</h2>
+			<h3>Links</h2></br>
 			<ul>
 				<li><a href="https://www.nidirect.gov.uk" class="link" style="color: #ffffff">NIDirect</a></li>
 				<li><a href="https://www.gov.uk/" class="link" style="color: #ffffff">GOV.UK</a></li>
 				<li><a href="http://www.ninis.nisra.gov.uk/" class="link" style="color: #ffffff">NINIS</a></li>
 			</ul>
-		</div>
-		<hr style="border-top-color: {theme['muted']}" />
-        <div>
-			<h2>Follow NISRA</h2>
+			<h3>Follow NISRA</h2></br>
 			<ul> 
 				<li><a href="https://www.facebook.com/nisra.gov.uk" class="link" style="color: #ffffff">Facebook</a></li>
 				<li><a href="https://twitter.com/NISRA" class="link" style="color: #ffffff">Twitter</a></li>
 				<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
 			</ul>
 		</div>
-		<div>
+		<hr style="border-top-color: {theme['muted']}" />
+		<div></br>
 			<ul>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
 				<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Cookies and privacy</a></li>
