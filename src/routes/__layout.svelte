@@ -16,8 +16,8 @@
   <link rel="icon" href="{urls.base}/favicon.png" />
 </svelte:head>
 
-<NISRAHeader/>
 <Warning/>
+<NISRAHeader/>
 
 <slot/>
 
