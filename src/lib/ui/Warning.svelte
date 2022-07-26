@@ -9,7 +9,7 @@
     color: white;
     background-color: #3878c5;
     margin-bottom: 0px;
-    padding: 0px 0;
+    padding: 5px 0;
     font-size: 0.8em;
   }
 </style>

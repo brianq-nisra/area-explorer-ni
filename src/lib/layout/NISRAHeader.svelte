@@ -29,13 +29,12 @@
 		box-sizing: border-box;
 		position: relative;
 		height: 45px;
-		margin-bottom: -45px;
 		border-bottom: 1px solid #777;
 		z-index: 1;
 	}
 	picture {
 		position: relative;
-		top: -3px;
+		top: 1px;
 		padding: 0 2px;
 	}
 	img {
