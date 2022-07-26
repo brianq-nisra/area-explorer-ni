@@ -7,7 +7,7 @@
 	export let center = false;
 </script>
 
-<nav style="background-color: #00205b">/
+<nav style="background-color: #ffffff">/
   <div class="col-wide middle" class:center>
 		<a href="https://www.nisra.gov.uk/">
 			<picture>
@@ -28,8 +28,8 @@
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		position: relative;
-		height: 80px;
-		margin-bottom: -80px;
+		height: 45px;
+		margin-bottom: -45px;
 		border-bottom: 1px solid #777;
 		z-index: 1;
 	}

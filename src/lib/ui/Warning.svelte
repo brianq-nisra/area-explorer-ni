@@ -8,8 +8,8 @@
   .warning {
     color: white;
     background-color: #3878c5;
-    margin-bottom: 1px;
-    padding: 1px 0;
+    margin-bottom: 0px;
+    padding: 0px 0;
     font-size: 0.8em;
   }
 </style>

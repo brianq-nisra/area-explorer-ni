@@ -23,7 +23,9 @@
 					<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
 				</ul>
 		</div>
-		<hr style="border-top-color: {theme['muted']}" />
+		<div>
+			<hr style="border-top-color: {theme['muted']}" />
+		</div>
 		<div>
 			<ul>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
