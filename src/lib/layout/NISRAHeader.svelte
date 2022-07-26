@@ -11,7 +11,6 @@
   <div class="col-wide middle" class:center>
 		<a href="https://www.nisra.gov.uk/">
 			<picture>
-				<img src="{assets}/img/nisra-full-name-stacked-white.svg" alt="Northern Ireland Statistics and Research Agency">
 				{#if theme.name == 'dark'}
 				<img src="{assets}/img/nisra-full-name-stacked-white.svg" alt="Northern Ireland Statistics and Research Agency">
 				{:else if filled == true}
