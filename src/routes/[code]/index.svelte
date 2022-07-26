@@ -346,29 +346,12 @@
 		<h3>Key stats for {place.name} <span class="title-inset muted">Census 2021</span></h3>
 	</div>
 	<div>
-		<span class="text-bold">Sex profile</span><br/>
+		<span class="text-bold">Sex profile</span>&nbsp;<span class="text-small"><a href="http://www.nisra.gov.uk/census/definitions">definition</a></span>
 		<div class="chart" style="height: 100px;">
 			<ColChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
 		</div>
 		{#if chartLabel && !(overtime && !hasChange)}
 		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
-		{/if}
-	</div>
-	<div>
-		<span class="text-bold">Sex key fact</span>
-		<br/>
-		<span class="text-big">{changeStr(place.data.population.perc['2021'].females, '%', 0)}</span><span class="text-small">of the population is female
-		<br/>
-		<span class="text-small"><Em><span class="{changeClass(place.data.population.perc.change.females)}">{changeStr(place.data.population.perc.change.females, '%', 1)}</span></Em> since 2011</span>
-		<br/>
-		{#if !overtime}
-		{#if place.type != 'ew'}
-		<span class="text-small"><Em>{place.data.population.value['2021'].females / ew.data.population.value['2021'].females >= 0.001 ? ((place.data.population.value['2021'].females / ew.data.population.value['2021'].females) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland female population</span>
-		{#if place.type != 'ctry'}
-		<div class="text-small muted">{place.data.population.value_rank['2021'].females.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].females)} largest female population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
-		{/if}
-		{/if}
-		{:else if hasChange}
 		{/if}
 	</div>
 	<div>
@@ -387,17 +370,6 @@
 		{/if}
 	</div>
 	<div>
-		<span class="text-bold">More Children or Older</span>
-		<br/>
-		{#if place.data.age.perc['2021']['0-14 years'] > place.data.age.perc['2021']['65+ years']}
-		<div class="text-small">More children than older</div>
-		{:else if place.data.age.perc['2021']['0-14 years'] < place.data.age.perc['2021']['65+ years']}
-		<div class="text-small">More older than children</div>
-		{:else if place.data.age.perc['2021']['0-14 years'] = place.data.age.perc['2021']['65+ years']}
-		<div class="text-small">Same old and children</div>
-		{/if}
-	</div>
-	<div>
 		<span class="text-bold">Religion or religion brought up in</span><br/>
 		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
@@ -408,7 +380,7 @@
 	<div>
 		<span class="text-bold">Country of birth key fact</span>
 		<br/>
-		<span class="text-big">{changeStr(100 - place.data.cob.perc['2021'].ni, '%', 1)}</span><span class="text-small">of the population were born outside Northern Ireland
+		<span class="text-big">{changeStr(100 - place.data.cob.perc['2021'].ni, '%', 0)}</span><span class="text-small">of the population were born outside Northern Ireland
 	</div>
 	<div>
 		<span class="text-bold">Passport(s) held</span><br/>
@@ -441,17 +413,6 @@
 		<StackedBarChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
-		<span class="text-bold">More Irish or Ulster-Scots</span>
-		<br/>
-		{#if place.data.irish.perc['2021'].some > place.data.ulster.perc['2021'].some}
-		<div class="text-small">More Irish than Ulster-Scots</div>
-		{:else if place.data.irish.perc['2021'].some < place.data.ulster.perc['2021'].some}
-		<div class="text-small">More Ulster-Scots than Irish</div>
-		{:else if place.data.irish.perc['2021'].some = place.data.ulster.perc['2021'].some}
-		<div class="text-small">Same Ulster-Scots and Irish</div>
-		{/if}
-	</div>
-	<div>
 		<span class="text-bold">Ethic group</span><br/>
 		<StackedBarChart data="{place && makeData(['ethnic', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
@@ -463,7 +424,24 @@
 		<h3>Charts for demo purposes - to show what is possible - do not propose using</h3>
 	</div>
 	<div>
-		<span class="text-bold">Sex</span><span class="text-small"><br/><a href="http://www.nisra.gov.uk/census/definitions">definition</a></span><br/>
+		<span class="text-bold">Sex key fact</span>
+		<br/>
+		<span class="text-big">{changeStr(place.data.population.perc['2021'].females, '%', 0)}</span><span class="text-small">of the population is female
+		<br/>
+		<span class="text-small"><Em><span class="{changeClass(place.data.population.perc.change.females)}">{changeStr(place.data.population.perc.change.females, '%', 1)}</span></Em> since 2011</span>
+		<br/>
+		{#if !overtime}
+		{#if place.type != 'ew'}
+		<span class="text-small"><Em>{place.data.population.value['2021'].females / ew.data.population.value['2021'].females >= 0.001 ? ((place.data.population.value['2021'].females / ew.data.population.value['2021'].females) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland female population</span>
+		{#if place.type != 'ctry'}
+		<div class="text-small muted">{place.data.population.value_rank['2021'].females.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].females)} largest female population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
+		{/if}
+		{/if}
+		{:else if hasChange}
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Sex</span><span class="text-small">&nbsp;<a href="http://www.nisra.gov.uk/census/definitions">definition</a></span><br/>
 		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
@@ -550,6 +528,28 @@
 		</div>
 		{#if chartLabel && !(overtime && !hasChange)}
 		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">More Children or Older</span>
+		<br/>
+		{#if place.data.age.perc['2021']['0-14 years'] > place.data.age.perc['2021']['65+ years']}
+		<div class="text-small">More children than older</div>
+		{:else if place.data.age.perc['2021']['0-14 years'] < place.data.age.perc['2021']['65+ years']}
+		<div class="text-small">More older than children</div>
+		{:else if place.data.age.perc['2021']['0-14 years'] = place.data.age.perc['2021']['65+ years']}
+		<div class="text-small">Same old and children</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">More Irish or Ulster-Scots</span>
+		<br/>
+		{#if place.data.irish.perc['2021'].some > place.data.ulster.perc['2021'].some}
+		<div class="text-small">More Irish than Ulster-Scots</div>
+		{:else if place.data.irish.perc['2021'].some < place.data.ulster.perc['2021'].some}
+		<div class="text-small">More Ulster-Scots than Irish</div>
+		{:else if place.data.irish.perc['2021'].some = place.data.ulster.perc['2021'].some}
+		<div class="text-small">Same Ulster-Scots and Irish</div>
 		{/if}
 	</div>
 </div>
