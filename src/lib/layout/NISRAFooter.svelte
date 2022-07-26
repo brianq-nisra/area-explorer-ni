@@ -23,6 +23,7 @@
 					<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
 				</ul>
 		</div>
+		<hr style="border-top-color: {theme['muted']}" />
 		<div>
 			<ul>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
@@ -38,8 +39,8 @@
 
 <style>
 	footer {
-		padding-bottom: 72px;
-		padding-top: 36px;
+		padding-bottom: 20px;
+		padding-top: 20px;
 		font-size: 18px;
 	}
 	footer a.link {
@@ -60,8 +61,8 @@
 		text-decoration: none;
 	}
 	footer hr {
-		margin-bottom: 27px;
-		margin-top: 36px;
+		margin-bottom: 10px;
+		margin-top: 10px;
 		border: none;
 		border-top: 1px solid #777;
 	}
