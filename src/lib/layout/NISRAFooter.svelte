@@ -21,13 +21,13 @@
 			{/if}
 		</a>
         <div>
-			<h3>Links</h2></br>
+			<h3>Links</h3><br>
 			<ul>
 				<li><a href="https://www.nidirect.gov.uk" class="link" style="color: #ffffff">NIDirect</a></li>
 				<li><a href="https://www.gov.uk/" class="link" style="color: #ffffff">GOV.UK</a></li>
 				<li><a href="http://www.ninis.nisra.gov.uk/" class="link" style="color: #ffffff">NINIS</a></li>
-			</ul>
-			<h3>Follow NISRA</h2></br>
+			</ul>	
+			<h3>Follow NISRA</h3><br>
 			<ul> 
 				<li><a href="https://www.facebook.com/nisra.gov.uk" class="link" style="color: #ffffff">Facebook</a></li>
 				<li><a href="https://twitter.com/NISRA" class="link" style="color: #ffffff">Twitter</a></li>
