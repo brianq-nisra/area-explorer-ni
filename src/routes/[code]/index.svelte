@@ -72,9 +72,9 @@
 		let code = props[0];
 		let val = props[1];
 		
-		let source = place.data[code][val]['2011'];
-		let sourcePrev = place.data[code][val]['2001'];
-		let sourceEW = ew.data[code][val]['2011'];
+		let source = place.data[code][val]['2021'];
+		let sourcePrev = place.data[code][val]['2011'];
+		let sourceEW = ew.data[code][val]['2021'];
 
 		let keys = codes[code].map(d => d.code);
 		let labels = codes[code].map(d => d.label ? d.label : d.code);
@@ -157,7 +157,7 @@
 	}
 
 	$: w && onResize();
-	$: chartLabel = overtime ? '2001 comparison' : place && place.parents[0] ? 'Northern Ireland comparison' : null;
+	$: chartLabel = overtime ? '2011 comparison' : place && place.parents[0] ? 'Northern Ireland comparison' : null;
 	$: place && update(place);
 	$: hasChange = place && place.data.population.value.change.all != null;
 </script>
@@ -197,59 +197,51 @@
 	<div class="text-small">
 		Comparison:
 		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>National-level figures</button>
-		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Change from 2001</button>
+		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Change from 2011</button>
 	</div>
 </div>
 
 <div id="grid" class="grid mt" bind:clientWidth={w}>
 	<div style="grid-column: span {cols};">
-		<h3>Overview <span class="title-inset muted">Census 2011</span></h3>
+		<h3>Overview <span class="title-inset muted">Census 2021</span></h3>
 	</div>
 	<div>
 			{#if place.type == 'ew' || place.type =='ctry'}
-			The population of {place.name} was {place.data.population.value['2011'].all.toLocaleString()} at the time of the 2011 Census.
+			The population of {place.name} was {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census.
 			{:else}
 			{place.name} is a {types[place.type].name.toLowerCase()} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
-			The {types[place.type].name.toLowerCase()}'s population of {place.data.population.value['2011'].all.toLocaleString()} at the time of the 2011 Census made it the country's {place.data.population.value_rank['2011'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2011'].all)} largest.
+			The {types[place.type].name.toLowerCase()}'s population of {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census made it the country's {place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest.
 			{/if}
 			{#if hasChange}
-			{place.name} saw a population {place.data.population.value.change.all > 0 ? 'increase' : 'decrease'} of {changeStr(place.data.population.value.change.all, '%', 1)} from 2001.
+			{place.name} saw a population {place.data.population.value.change.all > 0 ? 'increase' : 'decrease'} of {changeStr(place.data.population.value.change.all, '%', 1)} from 2011.
 			{/if}
 	</div>
 	<div>
 		<span class="text-bold">Population - prepared by Maire</span>
 		<br/>
-		<span class="text-big">{place.data.population.value['2011'].all.toLocaleString()}</span><br/>
+		<span class="text-big">{place.data.population.value['2021'].all.toLocaleString()}</span><br/>
 		{#if !overtime}
 		{#if place.type != 'ew'}
-		<span class="text-small"><Em>{place.data.population.value['2011'].all / ew.data.population.value['2011'].all >= 0.001 ? ((place.data.population.value['2011'].all / ew.data.population.value['2011'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland population</span>
+		<span class="text-small"><Em>{place.data.population.value['2021'].all / ew.data.population.value['2021'].all >= 0.001 ? ((place.data.population.value['2021'].all / ew.data.population.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland population</span>
 		{#if place.type != 'ctry'}
-		<div class="text-small muted">{place.data.population.value_rank['2011'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2011'].all)} largest population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
+		<div class="text-small muted">{place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
 		{/if}
 		{/if}
 		{:else if hasChange}
-		<span class="text-small"><Em><span class="{changeClass(place.data.population.value.change.all)}">{changeStr(place.data.population.value.change.all, '%', 1)}</span></Em> since 2001</span>
+		<span class="text-small"><Em><span class="{changeClass(place.data.population.value.change.all)}">{changeStr(place.data.population.value.change.all, '%', 1)}</span></Em> since 2011</span>
 		{#if !['ew', 'ctry'].includes(place.type)}
 		<div class="text-small muted">{place.data.population.value_rank.change.all.toLocaleString()}{suffixer(place.data.population.value_rank.change.all)} largest increase of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
 		{/if}
 		{/if}
 	</div>
 	<div>
-		<span class="text-bold">Density</span>
-		<br/>
-		<span class="inline text-big">{place.data.density.value['2011'].all.toLocaleString()}</span>
-		<span class="inline condensed text-small">people<br/>per hectare</span><br/>
-		{#if !overtime}
-		{#if !['ew', 'ctry'].includes(place.type)}
-		<span class="text-small"><Em>{adjectify(place.count, place.data.density.value_rank['2011'].all)}</Em> average density</span>
-		<div class="text-small muted">{place.data.density.value_rank['2011'].all.toLocaleString()}{suffixer(place.data.density.value_rank['2011'].all)} highest density of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
-		{/if}
-		{:else if hasChange}
-		<span class="text-small"><Em><span class="{changeClass(place.data.population.value.change.all)}">{changeStr(place.data.population.value.change.all, '%', 1)}</span></Em> since 2001</span>
-		{#if !['ew', 'ctry'].includes(place.type)}
-		<div class="text-small muted">{place.data.population.value_rank.change.all.toLocaleString()}{suffixer(place.data.population.value_rank.change.all)} largest increase of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
-		{/if}
-		{/if}
+		<span class="text-bold">Location</span><br/>
+			{#if place.type == 'ew' || place.type =='ctry'}
+			Northern Ireland.
+			{:else}
+			{place.name} is a {types[place.type].name} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
+			{/if}
+		<a href="http://www.nisra.gov.uk/census/data_download/{place.code}.xlsx">Data for {place.name} can be downloaded here</a>
 	</div>
 	<div style="grid-column: span {cols};">
 		<h3>Explore related areas</h3>
@@ -351,70 +343,215 @@
 		</span>
 	</div>
 	<div style="grid-column: span {cols};">
-		<h3>Key stats for {place.name} <span class="title-inset muted">Census 2011</span></h3>
+		<h3>Key stats for {place.name} <span class="title-inset muted">Census 2021</span></h3>
 	</div>
 	<div>
-		<span class="text-bold">Location</span><br/>
-			{#if place.type == 'ew' || place.type =='ctry'}
-			Northern Ireland.
-			{:else}
-			{place.name} is a {types[place.type].name} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
-			{/if}
-		<a href="http://www.nisra.gov.uk/census/data_download/{place.code}.xlsx">Data for {place.name} can be downloaded here</a>
+		<span class="text-bold">Sex</span><span class="text-small"><br/><a href="http://www.nisra.gov.uk/census/definitions">definition</a></span><br/>
+		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
-		<span class="text-bold">Median age</span>
+		<span class="text-bold">Sex key fact</span>
 		<br/>
-		<span class="inline text-big">{place.data.agemed.value['2011'].all.toLocaleString()}</span>
-		<span class="inline condensed text-small">years</span><br/>
-		{#if !overtime && !['ew', 'ctry'].includes(place.type)}
-		<span class="text-small"><Em>{adjectify(place.count, place.data.agemed.value_rank['2011'].all, ['older', 'younger'])}</Em> average age</span>
-		<div class="text-small muted">{place.data.agemed.value_rank['2011'].all.toLocaleString()}{suffixer(place.data.agemed.value_rank['2011'].all)} oldest median age of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
-		{:else if hasChange}
-		<span class="text-small"><Em><span class="{changeClass(place.data.agemed.value['2011'].all - place.data.agemed.value['2001'].all)}">{changeStr(place.data.agemed.value['2011'].all - place.data.agemed.value['2001'].all, ' years', 0)}</span></Em> since 2001</span>
-		{#if !['ew', 'ctry'].includes(place.type)}
-		<div class="text-small muted">{place.data.agemed.value_rank.change.all.toLocaleString()}{suffixer(place.data.agemed.value_rank.change.all)} largest increase of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
+		<span class="text-big">{changeStr(place.data.population.perc['2021'].females, '%', 0)}</span><span class="text-small">of the population is female
+		<br/>
+		<span class="text-small"><Em><span class="{changeClass(place.data.population.perc.change.females)}">{changeStr(place.data.population.perc.change.females, '%', 1)}</span></Em> since 2011</span>
+		<br/>
+		{#if !overtime}
+		{#if place.type != 'ew'}
+		<span class="text-small"><Em>{place.data.population.value['2021'].females / ew.data.population.value['2021'].females >= 0.001 ? ((place.data.population.value['2021'].females / ew.data.population.value['2021'].females) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland female population</span>
+		{#if place.type != 'ctry'}
+		<div class="text-small muted">{place.data.population.value_rank['2021'].females.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].females)} largest female population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
 		{/if}
+		{/if}
+		{:else if hasChange}
 		{/if}
 	</div>
 	<div>
-		<span class="text-bold">Age profile</span><br/>
+		<span class="text-bold">Sex Ratio</span>
+		<br/>
+		<span class="text-big">{changeStr(place.data.population.perc['2021'].males / place.data.population.perc['2021'].females * 100)}</span>
+		<span class="text-small">males for every 100 females
+	</div>
+	<div>
+		<span class="text-bold">Sex profile</span><br/>
 		<div class="chart" style="height: 100px;">
-			<ColChart data="{place && makeData(['age10yr', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+			<ColChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
 		</div>
 		{#if chartLabel && !(overtime && !hasChange)}
 		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
 		{/if}
 	</div>
 	<div>
-		<span class="text-bold">Sex</span><br/>
-		<StackedBarChart data="{place && makeData(['population', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">Broad age bands profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
 	</div>
 	<div>
-		<span class="text-bold">Food adjusted</span><br/>
-		<StackedBarChart data="{place && makeData(['topic_new', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">More Children or Older</span>
+		<br/>
+		{#if place.data.age.perc['2021']['0-14 years'] > place.data.age.perc['2021']['65+ years']}
+		<div class="text-small">More children than older</div>
+		{:else if place.data.age.perc['2021']['0-14 years'] < place.data.age.perc['2021']['65+ years']}
+		<div class="text-small">More older than children</div>
+		{:else if place.data.age.perc['2021']['0-14 years'] = place.data.age.perc['2021']['65+ years']}
+		<div class="text-small">Same old and children</div>
+		{/if}
 	</div>
 	<div>
-		<span class="text-bold">Ethnicity adjusted</span><br/>
-		<StackedBarChart data="{place && makeData(['ethnicity', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">Broad age bands</span><br/>
+		<StackedBarChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-small">Further information on definitions of Age click here
 	</div>
 	<div>
-		<span class="text-bold">General Health</span><br/>
-		<StackedBarChart data="{place && makeData(['health', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">Religion or religion brought up in</span><br/>
+		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
-		<span class="text-bold">Employment</span><br/>
-		<StackedBarChart data="{place && makeData(['economic', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">Religion or religion brought up in profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
 	</div>
 	<div>
-		<span class="text-bold">Travel to work</span><br/>
-		<StackedBarChart data="{place && makeData(['travel', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">Country of birth</span><br/>
+		<StackedBarChart data="{place && makeData(['cob', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
-		<span class="text-bold">Home ownership</span><br/>
-		<StackedBarChart data="{place && makeData(['tenure', 'perc', '2011'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<span class="text-bold">Country of birth key fact</span>
+		<br/>
+		<span class="text-big">{changeStr(100 - place.data.cob.perc['2021'].ni, '%', 1)}</span><span class="text-small">of the population were born outside Northern Ireland
+	</div>
+
+	<div>
+		<span class="text-bold">Country of birth profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['cob', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Passport(s) held</span><br/>
+		<StackedBarChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Passport(s) held key fact</span>
+		<br/>
+		<span class="text-big">{changeStr(place.data.passport.perc['2021'].none, '%', )}</span><span class="text-small">of the population have no passport
+	</div>
+	<div>
+		<span class="text-bold">Passport(s) held profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">National Identity</span><br/>
+		<StackedBarChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">National Identity profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Main language</span><br/>
+		<StackedBarChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Main language key facts</span>
+		<br/>
+		<span class="text-big">{changeStr(place.data.mainlang.perc['2021'].other, '%', 0)}</span><span class="text-small">of the population does not have English as their main language
+	</div>
+	<div>
+		<span class="text-bold">Main language profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Knowledge of Irish</span><br/>
+		<StackedBarChart data="{place && makeData(['irish', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Knowledge of Irish profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['irish', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Knowledge of Ulster-Scots</span><br/>
+		<StackedBarChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Knowledge of Ulster-Scots profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">More Irish or Ulster-Scots</span>
+		<br/>
+		{#if place.data.irish.perc['2021'].some > place.data.ulster.perc['2021'].some}
+		<div class="text-small">More Irish than Ulster-Scots</div>
+		{:else if place.data.irish.perc['2021'].some < place.data.ulster.perc['2021'].some}
+		<div class="text-small">More Ulster-Scots than Irish</div>
+		{:else if place.data.irish.perc['2021'].some = place.data.ulster.perc['2021'].some}
+		<div class="text-small">Same Ulster-Scots and Irish</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Ethic group</span><br/>
+		<StackedBarChart data="{place && makeData(['ethnic', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Ethnic group profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['ethnic', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
+	</div>
+	<div>
+		<span class="text-bold">Household size</span><br/>
+		<StackedBarChart data="{place && makeData(['hhsize', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Household size profile</span><br/>
+		<div class="chart" style="height: 100px;">
+			<ColChart data="{place && makeData(['hhsize', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
+		</div>
+		{#if chartLabel && !(overtime && !hasChange)}
+		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		{/if}
 	</div>
 </div>
+{/if}
 </Section>
 
 <style>

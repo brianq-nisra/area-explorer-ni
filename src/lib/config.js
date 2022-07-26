@@ -17,78 +17,178 @@ export const themes = {
 };
 
 export const urls = {
-		options: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/v9/places_test.csv',
-		places: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/v13/',
-		base: 'https://kham1508.github.io/area-explorer-ni/'
+	options: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/v9/places_test_expanded_named.csv',
+	places: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/2021/',
 };
-	
+
 export const types = {
 //	ew: {name: '', pl: ''},
 //	oa: {name: 'Output area', pl: 'Output areas'},
 //	lsoa: {name: 'Super Output Area', pl: 'Super Output Areas'},
-	dea: {name: 'District Electoral Area', pl: 'District Electoral Areas'},
-	lgd: {name: 'Local Government District', pl: 'Districts'},
+dea: {name: 'District Electoral Area', pl: 'District Electoral Areas'},
+town: {name: 'settlement', pl: 'Town'},
+lgd: {name: 'Local Government District', pl: 'Districts'},
 //	cty: {name: 'County', pl: 'Counties'},
 //	rgn: {name: 'Region', pl: 'Regions'},
-	ctry: {name: 'Country', pl: 'Countries'}
+ctry: {name: 'Country', pl: 'Countries'}
 };
 
 export const codes = {
-	age10yr: [
-		{code: '0-9'},
-		{code: '10-19'},
-		{code: '20-29'},
-		{code: '30-39'},
-		{code: '40-49'},
-		{code: '50-59'},
-		{code: '60-69'},
-		{code: ['70-79', '80plus'], label: '70+'}
-	],
-	economic: [
-		{code: 'employee'},
-		{code: 'self-employed'},
-		{code: 'student', label: 'student (employed)'},
-		{code: 'unemployed'},
-		{code: 'inactive'}
-	],
-	health: [
-		{code: 'good'},
-		{code: 'fair'},
-		{code: 'bad'}
-	],
-	topic_new: [
-		{code: 'bread'},
-		{code: 'milk'},
-		{code: 'ham'},
-		{code: 'cheese'},
-		{code: 'eggs'}
-	],
-	ethnicity: [
-		{code: 'white', label: 'White'},
-		{code: 'asian', label: 'Asian'},
-		{code: 'black', label: 'Black'},
-		{code: 'mixed', label: 'Mixed'},
-		{code: 'other', label: 'Other'}
-	],
-	population: [
-		{code: 'female'},
-		{code: 'male'}
-	],
-	tenure: [
-		{code: 'owned', label: 'owner occupied'},
-		{code: 'shared_ownership', label: 'shared ownership'},
-		{code: 'rented_private', label: 'rented (private)'},
-		{code: 'rented_social', label: 'rented (social)'},
-		{code: 'rent_free', label: 'rent (free)'}
-	],
-	travel: [
-		{code: "car_van", label: "car and van"},
-		{code: "bus"},
-		{code: "bicycle"},
-		{code: "foot", label: "on foot"},
-		{code: "home", label: "home worker"},
-		{code: "other"}
-	]
+age: [
+	{code: '0-14 years'},
+	{code: '15-39 years'},
+	{code: '40-64 years'},
+	{code: '65+ years'}	
+],
+cob: [
+	{code: 'ni', label: 'Northern Ireland'},
+	{code: 'england', label: 'England'},
+	{code: 'scotland', label: 'Scotland'},
+	{code: 'wales', label: 'Wales'},
+	{code: 'roi', label: 'Republic of Ireland'},
+	{code: 'other', label: 'Other country'}			
+],
+mainlang: [
+	{code: 'english', label: 'English'},
+	{code: 'other', label: 'Other languages'}
+],
+irish: [
+	{code: 'some', label: 'Some ability in Irish'},
+	{code: 'none', label: 'No ability in Irish'}
+],
+ulster: [
+	{code: 'some', label: 'Some ability in Ulster-Scots'},
+	{code: 'none', label: 'No ability in Ulster-Scots'}
+],	
+ethnic: [
+	{code: 'white', label: 'White'},
+	{code: 'asian', label: 'Asian'},
+	{code: 'black', label: 'Black'},
+	{code: 'mixed', label: 'Mixed'},
+	{code: 'other', label: 'Other'}
+],	
+natid: [
+	{code: 'british', label: 'British only'},
+	{code: 'irish', label: 'Irish only'},
+	{code: 'nirish', label: 'Northern Irish only'},
+	{code: 'british_irish', label: 'British and Irish only'},
+	{code: 'british_nirish', label: 'British and Northern Irish only'},
+	{code: 'irish_nirish', label: 'Irish and Northern Irish only'},
+	{code: 'british_irish_nirish', label: 'British, Irish and Northern Irish only'},
+	{code: 'other', label: 'Other'}
+],	
+religion: [
+	{code: 'catholic', label: 'Catholic'},
+	{code: 'protestant', label: 'Protestant and Other Christian (including Christian related)'},
+	{code: 'other', label: 'Other religions'},
+	{code: 'none', label: 'None'}
+],	
+passport: [
+	{code: 'uk', label: 'UK only'},
+	{code: 'ireland', label: 'Ireland only'},
+	{code: 'uk_ireland', label: 'UK and Ireland'},
+	{code: 'other', label: 'Other passport(s)'},
+	{code: 'none', label: 'No passport'}
+],	
+hhsize: [
+	{code: 'one', label: '1 person'},
+	{code: 'two', label: '2 people'},
+	{code: 'three', label: '3 people'},
+	{code: 'four', label: '4 people'},
+	{code: 'fiveplus', label: '5 or more people'}
+],	
+population: [
+	{code: 'females'},
+	{code: 'males'}
+]
+};
+
+export const urls = {
+	options: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/v9/places_test_expanded_named.csv',
+	places: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/2021/',
+	base: 'https://MaireBrolly.github.io/area-explorer-ni/'
+};
+
+export const types = {
+//	ew: {name: '', pl: ''},
+//	oa: {name: 'Output area', pl: 'Output areas'},
+//	lsoa: {name: 'Super Output Area', pl: 'Super Output Areas'},
+dea: {name: 'District Electoral Area', pl: 'District Electoral Areas'},
+town: {name: 'settlement', pl: 'Town'},
+lgd: {name: 'Local Government District', pl: 'Districts'},
+//	cty: {name: 'County', pl: 'Counties'},
+//	rgn: {name: 'Region', pl: 'Regions'},
+ctry: {name: 'Country', pl: 'Countries'}
+};
+
+export const codes = {
+age: [
+	{code: '0-14 years'},
+	{code: '15-39 years'},
+	{code: '40-64 years'},
+	{code: '65+ years'}	
+],
+cob: [
+	{code: 'ni', label: 'Northern Ireland'},
+	{code: 'england', label: 'England'},
+	{code: 'scotland', label: 'Scotland'},
+	{code: 'wales', label: 'Wales'},
+	{code: 'roi', label: 'Republic of Ireland'},
+	{code: 'other', label: 'Other country'}			
+],
+mainlang: [
+	{code: 'english', label: 'English'},
+	{code: 'other', label: 'Other languages'}
+],
+irish: [
+	{code: 'some', label: 'Some ability in Irish'},
+	{code: 'none', label: 'No ability in Irish'}
+],
+ulster: [
+	{code: 'some', label: 'Some ability in Ulster-Scots'},
+	{code: 'none', label: 'No ability in Ulster-Scots'}
+],	
+ethnic: [
+	{code: 'white', label: 'White'},
+	{code: 'asian', label: 'Asian'},
+	{code: 'black', label: 'Black'},
+	{code: 'mixed', label: 'Mixed'},
+	{code: 'other', label: 'Other'}
+],	
+natid: [
+	{code: 'british', label: 'British only'},
+	{code: 'irish', label: 'Irish only'},
+	{code: 'nirish', label: 'Northern Irish only'},
+	{code: 'british_irish', label: 'British and Irish only'},
+	{code: 'british_nirish', label: 'British and Northern Irish only'},
+	{code: 'irish_nirish', label: 'Irish and Northern Irish only'},
+	{code: 'british_irish_nirish', label: 'British, Irish and Northern Irish only'},
+	{code: 'other', label: 'Other'}
+],	
+religion: [
+	{code: 'catholic', label: 'Catholic'},
+	{code: 'protestant', label: 'Protestant and Other Christian (including Christian related)'},
+	{code: 'other', label: 'Other religions'},
+	{code: 'none', label: 'None'}
+],	
+passport: [
+	{code: 'uk', label: 'UK only'},
+	{code: 'ireland', label: 'Ireland only'},
+	{code: 'uk_ireland', label: 'UK and Ireland'},
+	{code: 'other', label: 'Other passport(s)'},
+	{code: 'none', label: 'No passport'}
+],	
+hhsize: [
+	{code: 'one', label: '1 person'},
+	{code: 'two', label: '2 people'},
+	{code: 'three', label: '3 people'},
+	{code: 'four', label: '4 people'},
+	{code: 'fiveplus', label: '5 or more people'}
+],	
+population: [
+	{code: 'females'},
+	{code: 'males'}
+]
 };
 
 //export const mapStyle = 'https://bothness.github.io/ons-basemaps/data/style-omt.json';
