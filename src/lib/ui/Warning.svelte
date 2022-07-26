@@ -7,9 +7,9 @@
 <style>
   .warning {
     color: white;
-    background-color: #3878c5;
+    background-color: #00205b;
     margin-bottom: 10px;
     padding: 8px 0;
-    font-size: 0.85em;
+    font-size: 1.1em;
   }
 </style>
