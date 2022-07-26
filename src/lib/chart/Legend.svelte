@@ -5,7 +5,7 @@
 	export let xKey = "x";
 	export let yKey = "y";
 	export let zKey = "ew";
-	export let colors = ['#212373','#781C87',  '#0D9AA2', '#C11B71', '#FB7979', '#F66068', '#746CB1', '#22D0B6', 'lightgrey'];
+	export let colors = ['#212373','#6C63AC', '#781C87',   '#C11B71', '#FB7979', '#F66068', '#801650', '#0D9AA2', 'lightgrey'];
 	export let textColor = '#555';
 	export let mutedColor = '#999';
 	export let decimals = null;
@@ -35,9 +35,9 @@
 		<div class="bullet" class:round style="background-color: {colors[i]}"/>
 		{item[xKey]} {toPerc(item[yKey])}
 		{#if zKey == "prev"}
-		<span class="{changeClass(Math.round(item[yKey] - item[zKey]))}">{changeStr(Math.round(item[yKey] - item[zKey]), 'pp')}</span>
+		<span class="" style="color: #801650; font-weight: bold">(2011 </span><span class="{changeClass(Math.round(item[yKey] - item[zKey]))}" >{changeStr(Math.round(item[yKey] - item[zKey]), 'pp')}</span><span class="" style="color: #801650; font-weight: bold">)</span>
 		{:else if zKey}
-		<span class="" style="color: {mutedColor}">({toPerc(item[zKey])})</span>
+		<span class="" style="color: #801650; font-weight: bold">(NI {toPerc(item[zKey])})</span>
 		{/if}
 	</li>
 	{/each}

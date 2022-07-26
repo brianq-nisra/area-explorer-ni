@@ -6,7 +6,8 @@
 	export let xKey = "x";
 	export let yKey = "y";
 	export let zKey = "ew";
-	export let colors = ['#212373','#781C87',  '#0D9AA2', '#C11B71', '#FB7979', '#F66068', '#746CB1', '#22D0B6', 'lightgrey'];
+//	export let colors = ['#212373','#781C87',  '#0D9AA2', '#C11B71', '#FB7979', '#F66068', '#746CB1', '#22D0B6', 'lightgrey'];
+	export let colors = ['#212373','#6C63AC', '#781C87',   '#C11B71', '#FB7979', '#F66068', '#801650', '#0D9AA2', 'lightgrey'];
 	export let decimals = null;
 	export let label = null;
 </script>
@@ -32,7 +33,7 @@
 		position: relative;
 	}
   .chart + .chart {
-    border-top: 1px solid white;
+    border-top: 3px solid white;
   }
 	.legend {
 		width: 100%;
@@ -47,9 +48,9 @@
 		height: 100%;
 		z-index: 1;
 		padding: 0 2px;
-		font-size: 0.8em;
+		font-size: 1em;
 		color: white;
-		opacity: 0.6;
+		opacity: 1;
 	}
 	.label:hover {
 		opacity: 1;
