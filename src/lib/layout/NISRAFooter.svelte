@@ -5,7 +5,7 @@
 	export let theme = getContext('theme');
 </script>
 
-<footer style="color: {theme['text']}; background-color: #00205b;">
+<footer style="color: #ffffff; background-color: #00205b;">
 	<div class="col-wide" data-analytics="footer">
 		<a href="https://www.nisra.gov.uk/">
 			{#if theme == 'dark'}
@@ -21,12 +21,12 @@
 			{/if}
 		</a>
 		<ul>
-			<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: {theme['text']}">Contact us</a></li>
-			<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: {theme['text']}">Cookies and privacy</a></li>
-			<li><a href="https://www.nisra.gov.uk/terms-and-conditions" class="link" style="color: {theme['text']}">Terms and conditions</a></li>
-			<li><a href="https://www.nisra.gov.uk//cookies" class="link" style="color: {theme['text']}">Cookies</a></li>
-			<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: {theme['text']}">Privacy</a></li>
-			<li><a href="https://www.nisra.gov.uk/accessibility-statement-nisra" class="link" style="color: {theme['text']}">Accessibility Statement</a></li>
+			<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
+			<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Cookies and privacy</a></li>
+			<li><a href="https://www.nisra.gov.uk/terms-and-conditions" class="link" style="color: #ffffff">Terms and conditions</a></li>
+			<li><a href="https://www.nisra.gov.uk//cookies" class="link" style="color: #ffffff">Cookies</a></li>
+			<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Privacy</a></li>
+			<li><a href="https://www.nisra.gov.uk/accessibility-statement-nisra" class="link" style="color: #ffffff">Accessibility Statement</a></li>
 		</ul>
 		<hr style="border-top-color: {theme['muted']}" />
 	</div>

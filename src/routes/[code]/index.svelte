@@ -378,18 +378,8 @@
 		<StackedBarChart data="{place && makeData(['cob', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
-		<span class="text-bold">Country of birth key fact</span>
-		<br/>
-		<span class="text-big">{changeStr(100 - place.data.cob.perc['2021'].ni, '%', 0)}</span><span class="text-small">of the population were born outside Northern Ireland
-	</div>
-	<div>
 		<span class="text-bold">Passport(s) held</span><br/>
 		<StackedBarChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div>
-		<span class="text-bold">Passport(s) held key fact</span>
-		<br/>
-		<span class="text-big">{changeStr(place.data.passport.perc['2021'].none, '%', )}</span><span class="text-small">of the population have no passport
 	</div>
 	<div>
 		<span class="text-bold">National Identity</span><br/>
@@ -398,11 +388,6 @@
 	<div>
 		<span class="text-bold">Main language</span><br/>
 		<StackedBarChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div>
-		<span class="text-bold">Main language key facts</span>
-		<br/>
-		<span class="text-big">{changeStr(place.data.mainlang.perc['2021'].other, '%', 0)}</span><span class="text-small">of the population does not have English as their main language
 	</div>
 	<div>
 		<span class="text-bold">Knowledge of Irish</span><br/>
@@ -422,6 +407,21 @@
 	</div>
 	<div style="grid-column: span {cols};">
 		<h3>Charts for demo purposes - to show what is possible - do not propose using</h3>
+	</div>
+	<div>
+		<span class="text-bold">Country of birth key fact</span>
+		<br/>
+		<span class="text-big">{changeStr(100 - place.data.cob.perc['2021'].ni, '%', 0)}</span><span class="text-small">of the population were born outside Northern Ireland
+	</div>
+	<div>
+		<span class="text-bold">Passport(s) held key fact</span>
+		<br/>
+		<span class="text-big">{changeStr(place.data.passport.perc['2021'].none, '%', )}</span><span class="text-small">of the population have no passport
+	</div>
+	<div>
+		<span class="text-bold">Main language key facts</span>
+		<br/>
+		<span class="text-big">{changeStr(place.data.mainlang.perc['2021'].other, '%', 0)}</span><span class="text-small">of the population does not have English as their main language
 	</div>
 	<div>
 		<span class="text-bold">Sex key fact</span>
