@@ -29,6 +29,7 @@ export const types = {
 dea: {name: 'District Electoral Area', pl: 'District Electoral Areas'},
 town: {name: 'settlement', pl: 'Town'},
 lgd: {name: 'Local Government District', pl: 'Districts'},
+postcode: {name: 'postcode', pl: 'postcode'},
 //	cty: {name: 'County', pl: 'Counties'},
 //	rgn: {name: 'Region', pl: 'Regions'},
 ctry: {name: 'Country', pl: 'Countries'}
