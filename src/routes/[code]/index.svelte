@@ -566,14 +566,14 @@
 	.btn {
 		padding: 2px 4px;
 		margin: 0;
-		border: 2px solid #206095;
+		border: 2px solid #00205b;
 		cursor: pointer;
-		color: #206095;
+		color: #00205b;
 		background-color: lightgrey;
 	}
 	.btn-active {
 		color: white;
-		background-color: #206095;
+		background-color: #00205b;
 	}
 	.increase {
 		color: darkgreen;

@@ -103,7 +103,7 @@
 		text-decoration: none;
 		display: block;
 		padding: 0;
-		border: 2px solid #206095 !important;
+		border: 2px solid #00205b !important;
 	}
 	a span {
 		display: inline-block;
@@ -130,7 +130,7 @@
 	}
 	#dropdown .highlight {
 		color: #fff;
-		background-color: #206095;
+		background-color: #00205b;
 		font-weight: 500;
 		cursor: pointer;
 	}
@@ -148,7 +148,7 @@
 		padding: 10px 5px;
 		margin: 0;
 		background-color: #fff;
-		border: 2px solid #206095 !important;
+		border: 2px solid #00205b !important;
 		border-radius: 0px;
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -170,7 +170,7 @@
 	#toggle,
 	#select input {
 		line-height: inherit;
-		color: #206095;
+		color: #00205b;
 		font-weight: 500;
 		cursor: pointer;
 	}
@@ -183,11 +183,11 @@
 	}
 	.selected {
 		color: #fff !important;
-		background-color: #206095;
+		background-color: #00205b;
 	}
 	.button {
 		color: #fff;
-		background-color: #206095;
+		background-color: #00205b;
 		background-repeat: no-repeat;
 		background-position: center;
 		display: inline-block;
