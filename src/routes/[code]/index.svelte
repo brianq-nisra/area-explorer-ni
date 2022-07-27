@@ -44,7 +44,7 @@
 	import { types, codes, mapStyle, mapSources, mapLayers, mapPaint } from "$lib/config";
 	import Section from "$lib/layout/Section.svelte";
 	import ColChart from "$lib/chart/ColChart.svelte";
-	import GroupChart from "$lib/chart/StackedBarChart.svelte";
+	import GroupChart from "$lib/chart/GroupChart.svelte";
 	import StackedBarChart from "$lib/chart/StackedBarChart.svelte";
 	import Em from "$lib/ui/Em.svelte";
 	import Select from "$lib/ui/Select.svelte";

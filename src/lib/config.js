@@ -17,7 +17,7 @@ export const themes = {
 };
 
 export const urls = {
-	options: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/2021/places_test_expanded_named.csv',
+	options: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/v9/places_test_expanded_named.csv',
 	places: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/2021/',
 	base: 'https://MaireBrolly.github.io/area-explorer-ni/'
 };
