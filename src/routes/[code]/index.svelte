@@ -594,7 +594,7 @@
 		color: grey;
 	}
 	.line {
-		background-color: #27A0CC;
+		background-color: #3878c5;
 		width: 25px;
   	height: 2px;
   	display: inline-block;

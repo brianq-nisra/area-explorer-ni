@@ -53,7 +53,7 @@
 			y="{$yScale($z(d)) - 1}"
 			width="{$xScale.bandwidth ? $xScale.bandwidth() : columnWidth(d)}"
 			height="2"
-			fill="#27A0CC"
+			fill="#3878c5"
 			{stroke}
 			stroke-width="{strokeWidth}"
 		/>
