@@ -20,7 +20,7 @@
 <Section column="wide">
   <div class="block">
     <span class="text-big title">Area Explorer</span>
-    <p>Select a country or region to start exploring</p>
+    <p>Select Northern Ireland or a Local Government District to start exploring</p>
     <ul>
       <li><a href="{base}/N92000001"><strong>Northern Ireland</strong></a></li>
       <ul>

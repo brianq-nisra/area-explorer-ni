@@ -196,7 +196,7 @@
 <div class="grid mts">
 	<div class="text-small">
 		Comparison:
-		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>National-level figures</button>
+		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>Northern Ireland</button>
 		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Change from 2011</button>
 	</div>
 </div>
