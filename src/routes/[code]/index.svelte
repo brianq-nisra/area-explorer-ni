@@ -24,7 +24,8 @@
 		res.forEach(d => {
 		  d.typepl = types[d.type].pl;
 		  d.typenm = types[d.type].name;
-		  d.typestr = lookup[d.parent] ? `${types[d.type].name} in ${lookup[d.parent]}` : '';
+		  d.typestr = lookup[d.parent] ? `${lookup[d.parent]} includes ${types[d.type].name} within ${lookup[d.parent]}` : '';
+//		  d.typestr = lookup[d.parent] ? `${types[d.type].name} within ${lookup[d.parent]}` : '';
 		});
 
 		let options = res.sort((a, b) => a.name.localeCompare(b.name));
