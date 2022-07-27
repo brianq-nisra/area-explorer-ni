@@ -44,6 +44,7 @@
 	import { types, codes, mapStyle, mapSources, mapLayers, mapPaint } from "$lib/config";
 	import Section from "$lib/layout/Section.svelte";
 	import ColChart from "$lib/chart/ColChart.svelte";
+	import GroupChart from "$lib/chart/StackedBarChart.svelte";
 	import StackedBarChart from "$lib/chart/StackedBarChart.svelte";
 	import Em from "$lib/ui/Em.svelte";
 	import Select from "$lib/ui/Select.svelte";
@@ -381,6 +382,10 @@
 	<div>
 		<span class="text-bold">Passport(s) held</span><br/>
 		<StackedBarChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Passport(s) held</span><br/>
+		<GroupChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div>
 		<span class="text-bold">National Identity</span><br/>
