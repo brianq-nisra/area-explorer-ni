@@ -48,7 +48,7 @@
 		margin: 0;
 		padding: 0;
 		font-size: 0.85em;
-		text-transform: capitalize;
+		text-transform: none;
 	}
 	li {
 		display: inline-block;
