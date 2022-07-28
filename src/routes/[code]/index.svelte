@@ -210,7 +210,6 @@
 			{#if place.type == 'ew' || place.type =='ctry'}
 			The population of {place.name} was {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census.
 			{:else}
-			{place.name} is a {types[place.type].name.toLowerCase()} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
 			The {types[place.type].name.toLowerCase()}'s population of {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census made it the country's {place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest.
 			{/if}
 			{#if hasChange}
@@ -240,7 +239,7 @@
 			{#if place.type == 'ew' || place.type =='ctry'}
 			Northern Ireland.
 			{:else}
-			{place.name} is a {types[place.type].name} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
+			{place.name} is a {types[place.type].name.toLowerCase()} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
 			{/if}
 		<a href="http://www.nisra.gov.uk/census/data_download/{place.code}.xlsx">Data for {place.name} can be downloaded here</a>
 	</div>
@@ -371,6 +370,18 @@
 		<h3>Key stats for {place.name} <span class="title-inset muted">Census 2021</span></h3>
 	</div>
 	<div>
+		<span class="text-bold">Main language</span><br/>
+		<StackedBarChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
+		<span class="text-bold">Knowledge of Irish</span><br/>
+		<StackedBarChart data="{place && makeData(['irish', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div class = "div-grey-box">
+		<span class="text-bold">Knowledge of Ulster-Scots</span><br/>
+		<StackedBarChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div>
 		<span class="text-bold">Religion or religion brought up in</span><br/>
 		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
@@ -385,18 +396,6 @@
 	<div>
 		<span class="text-bold">National Identity</span><br/>
 		<StackedBarChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div>
-		<span class="text-bold">Main language</span><br/>
-		<StackedBarChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div>
-		<span class="text-bold">Knowledge of Irish</span><br/>
-		<StackedBarChart data="{place && makeData(['irish', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div class = "div-grey-box">
-		<span class="text-bold">Knowledge of Ulster-Scots</span><br/>
-		<StackedBarChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
 		<span class="text-bold">Ethic group</span><br/>
