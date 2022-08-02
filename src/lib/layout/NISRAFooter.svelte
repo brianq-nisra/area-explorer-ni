@@ -7,24 +7,28 @@
 
 <footer style="color: #ffffff; background-color: #00205b;">
 	<div class="col-wide" data-analytics="footer">
-		<div style="width: 20%; float:left">
+		<div class="row">
+			<div class="column left">
 				<h3>Links</h3><br>
 				<ul>
-					<li><a href="https://www.nidirect.gov.uk" class="link" style="color: #ffffff">NIDirect</a></li>
-					<li><a href="https://www.gov.uk/" class="link" style="color: #ffffff">GOV.UK</a></li>
-					<li><a href="http://www.ninis.nisra.gov.uk/" class="link" style="color: #ffffff">NINIS</a></li>
-				</ul>	
-		</div>
-		<div style="width: 80%; float:right">
+					<li><a href="https://www.nidirect.gov.uk" class="link" style="color: #ffffff">NIDirect</a></li><br>
+					<li><a href="https://www.gov.uk/" class="link" style="color: #ffffff">GOV.UK</a></li><br>
+					<li><a href="http://www.ninis.nisra.gov.uk/" class="link" style="color: #ffffff">NINIS</a></li><br>
+				</ul>
+			</div>	
+			<div class="column right">
 				<h3>Follow NISRA</h3><br>
 				<ul> 
-					<li><a href="https://www.facebook.com/nisra.gov.uk" class="link" style="color: #ffffff">Facebook</a></li>
-					<li><a href="https://twitter.com/NISRA" class="link" style="color: #ffffff">Twitter</a></li>
-					<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li>
+					<li><a href="https://www.facebook.com/nisra.gov.uk" class="link" style="color: #ffffff">Facebook</a></li><br>
+					<li><a href="https://twitter.com/NISRA" class="link" style="color: #ffffff">Twitter</a></li><br>
+					<li><a href="https://www.youtube.com/user/nisrastats" class="link" style="color: #ffffff">YouTube</a></li><br>
 				</ul>
+			</div>
 		</div>
-		<div>
+		<br>
+		<div class="flex-list">
 			<ul>
+				<li>&copy Crown Copyright</li>
 				<li><a href="https://www.nisra.gov.uk/contact" class="link" style="color: #ffffff">Contact us</a></li>
 				<li><a href="https://www.nisra.gov.uk/nisra-privacy-notice" class="link" style="color: #ffffff">Cookies and privacy</a></li>
 				<li><a href="https://www.nisra.gov.uk/terms-and-conditions" class="link" style="color: #ffffff">Terms and conditions</a></li>
@@ -38,18 +42,17 @@
 
 <style>
 	footer {
-		padding-bottom: 20px;
-		padding-top: 20px;
+		padding-bottom: 5px;
 		font-size: 18px;
 	}
 	footer a.link {
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
-		text-decoration: underline;
+		text-decoration: none;
 		display: inline-block;
 	}
 	footer a.link:hover {
-		text-decoration: none;
+		text-decoration: underline;
 	}
 	footer a.link:active {
 		outline: 3px solid transparent;
@@ -88,5 +91,43 @@
 	}
 	a img:hover {
 		cursor: pointer;
+	}
+	.column {
+  		float: left;
+  		padding: 40px;
+	}
+	.left {
+		max-width: 30%;
+	}
+	.right {
+		max-width: 70%;
+	}
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.flex-list {
+		position: relative;
+		margin: 1em;
+		overflow: hidden;
+
+	}
+	.flex-list ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-left: -1px;
+	}
+	.flex-list li {
+		flex-grow: 1;
+		flex-basis: auto;
+		margin: .25em 0;
+		padding: 0 1em;
+		text-align: center;
+		border-left: 1px solid #ccc;
+		background-color: #00205b;
+		font-size: 14px;
 	}
 </style>

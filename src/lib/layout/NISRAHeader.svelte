@@ -28,15 +28,15 @@
 		  -webkit-box-sizing: border-box;
 		  box-sizing: border-box;
 		  position: relative;
-		  height: 46px;
+		  height: 65px;
 		  margin-bottom: -46px;
 		  border-bottom: 1px solid #777;
 		  z-index: 1;
 	  }
 	  picture {
 		  position: relative;
-		  top: -3px;
-		  padding: 0 2px;
+		  top: 0px;
+		  padding: 10px 2px;
 	  }
 	  img {
 		  width: 120px;
