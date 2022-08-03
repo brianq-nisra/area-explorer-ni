@@ -213,10 +213,25 @@
 		{#if place.type == 'ew' || place.type =='ctry'}
 			The population of {place.name} was {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census.
 			{:else}
-			The {types[place.type].name.toLowerCase()}'s population of {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census made it the country's {place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest.
+			The population of {place.name} was {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census, which made it the 
+			{#if place.data.population.value_rank['2021'].all == 1}
+			largest area.
+			{:else if place.data.population.value_rank['2021'].all == place.count}
+			smallest area.
+			{:else if place.data.population.value_rank['2021'].all < place.count/2 && place.data.population.value_rank['2021'].all != 1}
+			{place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest area.
+			{:else}
+			{place.count + 1 - place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.count + 1 - place.data.population.value_rank['2021'].all)} smallest area.
+			{/if}
 			{/if}
 			{#if hasChange}
-			{place.name} saw a population {place.data.population.value.change.all > 0 ? 'increase' : 'decrease'} of {changeStr(place.data.population.value.change.all, '%', 1)} from 2011.
+			{#if place.data.population.value.change.all == 0}
+			This area saw no change in population since the 2011 Census.
+			{:else if place.data.population.value.change.all >0}
+			This area saw a population increase of {changeStr(place.data.population.value.change.all, '%', 1)} since the 2011 Census.
+			{:else}
+			This area saw a population decrease of {changeStr(place.data.population.value.change.all, '%', 1)} since the 2011 Census.
+			{/if}
 			{/if}
 	</div>
 	<div class = "div-grey-box">
@@ -226,13 +241,34 @@
 		{#if place.type != 'ew'}
 		<span class="text-small"><Em>{place.data.population.value['2021'].all / ew.data.population.value['2021'].all >= 0.001 ? ((place.data.population.value['2021'].all / ew.data.population.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland population</span>
 		{#if place.type != 'ctry'}
-		<div class="text-small muted">{place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
+		<div class="text-small muted">
+			{#if place.data.population.value_rank['2021'].all == 1}
+			The largest
+			{:else if place.data.population.value_rank['2021'].all == place.count}
+			The smallest
+			{:else if place.data.population.value_rank['2021'].all < place.count/2 && place.data.population.value_rank['2021'].all != 1}
+			{place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest
+			{:else}
+			{place.count + 1 - place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.count + 1 - place.data.population.value_rank['2021'].all)} smallest
+			{/if}
+			 population of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
 		{/if}
 		{/if}
 		{:else if hasChange}
 		<span class="text-small"><Em><span class="{changeClass(place.data.population.value.change.all)}">{changeStr(place.data.population.value.change.all, '%', 1)}</span></Em> since 2011 Census</span>
 		{#if !['ew', 'ctry'].includes(place.type)}
-		<div class="text-small muted">{place.data.population.value_rank.change.all.toLocaleString()}{suffixer(place.data.population.value_rank.change.all)} largest increase of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
+		<div class="text-small muted">
+			{#if place.data.population.value_rank.change.all == 0}
+			{:else if place.data.population.value_rank.change.all == place.count}
+			The smallest of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}
+			{:else if place.data.population.value_rank.change.all == 1}
+			The largest of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}
+			{:else if place.data.population.value_rank.change.all < place.count/2 && place.data.population.value_rank.change.all != 1}
+			{place.data.population.value_rank.change.all.toLocaleString()}{suffixer(place.data.population.value_rank.change.all)} largest of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}
+			{:else}
+			{place.count + 1 - place.data.population.value_rank.change.all.toLocaleString()}{suffixer(place.count + 1 - place.data.population.value_rank.change.all)} smallest of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}
+			{/if}
+		</div>
 		{/if}
 		{/if}
 	</div>
@@ -248,10 +284,6 @@
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<h3 style="margin: 0;">Sex</h3><br/>
-		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div class = "div-grey-box">
 		<h3 style="margin: 0;">Broad age bands (years)</h3><br/>
 		<div class="chart" style="height: 100px;">
 			<ColChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
@@ -259,6 +291,10 @@
 		{#if chartLabel && !(overtime && !hasChange)}
 		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
 		{/if}
+	</div>
+	<div class = "div-grey-box">
+		<h3 style="margin: 0;">Sex</h3><br/>
+		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
 		<h3 style="margin: 0;">Household size</h3><br/>
@@ -462,9 +498,9 @@
 		color: grey;
 	}
 	.line {
-		background-color: #3878c5;
+		background-color: #C11B71;
 		width: 25px;
-  	height: 2px;
+  	height: 4px;
   	display: inline-block;
 		margin-bottom: 3px;
 	}

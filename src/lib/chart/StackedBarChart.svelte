@@ -12,11 +12,11 @@
 	export let label = null;
 </script>
 
-<div class="chart" style="height: {zKey ? height * 0.75 : height}px;">
+<div class="chart" style="height: {zKey ? height * .72 : height}px;">
 	<StackedBar {data} {yKey} {colors}/>
 </div>
 {#if zKey}
-<div class="chart" style="height: {height * 0.25}px;">
+<div class="chart" style="height: {height * .28}px;">
 	<StackedBar {data} yKey={zKey} {colors}/>
 	{#if label}
 	<div class="label">{label}</div>
@@ -47,10 +47,11 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
-		padding: 0 2px;
+		padding: 0px 2px;
 		font-size: 1em;
 		color: white;
 		opacity: 1;
+		font-weight: bold;
 		line-height: 1.2;
 	}
 	.label:hover {

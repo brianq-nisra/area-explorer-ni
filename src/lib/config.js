@@ -27,7 +27,7 @@ export const types = {
 //	oa: {name: 'Output area', pl: 'Output areas'},
 //	lsoa: {name: 'Super Output Area', pl: 'Super Output Areas'},
 dea: {name: 'District Electoral Area', pl: 'District Electoral Areas'},
-town: {name: 'settlement', pl: 'Town'},
+town: {name: 'settlement', pl: 'Settlement'},
 lgd: {name: 'Local Government District', pl: 'Districts'},
 postcode: {name: 'postcode', pl: 'postcode'},
 //	cty: {name: 'County', pl: 'Counties'},
@@ -73,28 +73,28 @@ natid: [
 	{code: 'british_only', label: 'British only'},
 	{code: 'irish_only', label: 'Irish only'},
 	{code: 'northern_irish_only', label: 'Northern Irish only'},
-	{code: 'british_and_irish_only', label: 'British and Irish only'},
-	{code: 'british_and_northern_irish_only', label: 'British and Northern Irish only'},
-	{code: 'irish_and_northern_irish_only', label: 'Irish and Northern Irish only'},
-	{code: 'british_irish_and_northern_irish_only', label: 'British, Irish and Northern Irish only'},
+	{code: 'british_and_irish_only', label: 'British & Irish only'},
+	{code: 'british_and_northern_irish_only', label: 'British & Northern Irish only'},
+	{code: 'irish_and_northern_irish_only', label: 'Irish & Northern Irish only'},
+	{code: 'british_irish_and_northern_irish_only', label: 'British, Irish & Northern Irish only'},
 	{code: 'other_natid', label: 'Other'}
 ],	
 religion: [
 	{code: 'catholic', label: 'Catholic'},
-	{code: 'protestant', label: 'Protestant and Other Christian (including Christian related)'},
+	{code: 'protestant', label: 'Protestant & Other Christian'},
 	{code: 'other_religions', label: 'Other religions'},
 	{code: 'none', label: 'None'}
 ],	
 religion_or_brought_up: [
 	{code: 'catholic', label: 'Catholic'},
-	{code: 'protestant', label: 'Protestant and Other Christian (including Christian related)'},
+	{code: 'protestant', label: 'Protestant & Other Christian'},
 	{code: 'other_religions', label: 'Other religions'},
 	{code: 'none', label: 'None'}
 ],	
 passport: [
 	{code: 'united_kingdom_only', label: 'UK only'},
 	{code: 'ireland_only', label: 'Ireland only'},
-	{code: 'united_kingdom_and_ireland_only', label: 'UK and Ireland'},
+	{code: 'united_kingdom_and_ireland_only', label: 'UK & Ireland'},
 	{code: 'other_passports', label: 'Other passport(s)'},
 	{code: 'no_passport', label: 'No passport'}
 ],	
