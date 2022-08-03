@@ -202,16 +202,18 @@
 	<div class="text-small">
 		Comparison:
 		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>Northern Ireland</button>
-		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Change from 2011</button>
+		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Compare to 2011</button>
 	</div>
 </div>
 
 <div id="grid" class="grid mt" bind:clientWidth={w}>
 	<div style="grid-column: span {cols};">
-		<h3>Overview <span class="title-inset muted">Census 2021</span></h3>
+		<h3>Census 2021</h3>
 	</div>
-	<div>
-			{#if place.type == 'ew' || place.type =='ctry'}
+	<div class = "div-grey-box">
+		<span class="text-bold">Overview</span>
+		<br/>
+		{#if place.type == 'ew' || place.type =='ctry'}
 			The population of {place.name} was {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census.
 			{:else}
 			The {types[place.type].name.toLowerCase()}'s population of {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census made it the country's {place.data.population.value_rank['2021'].all.toLocaleString()}{suffixer(place.data.population.value_rank['2021'].all)} largest.
@@ -220,7 +222,7 @@
 			{place.name} saw a population {place.data.population.value.change.all > 0 ? 'increase' : 'decrease'} of {changeStr(place.data.population.value.change.all, '%', 1)} from 2011.
 			{/if}
 	</div>
-	<div>
+	<div class = "div-grey-box">
 		<span class="text-bold">Population</span>
 		<br/>
 		<span class="text-big">{place.data.population.value['2021'].all.toLocaleString()}</span><br/>
@@ -238,31 +240,15 @@
 		{/if}
 		{/if}
 	</div>
-	<div>
-		<span class="text-bold">Location</span><br/>
-			{#if place.type == 'ew' || place.type =='ctry'}
-			Northern Ireland.
-			{:else}
-			{place.name} is a {types[place.type].name.toLowerCase()} in {place.parents[0].type == 'rgn' ? 'the ' + place.parents[0].name : place.parents[0].name}.
-			{/if}
-		<a href="http://www.nisra.gov.uk/census/data_download/{place.code}.xlsx">Data for {place.name} can be downloaded here</a>
-	</div>
-	<div>
-		<span class="text-bold">Sex profile</span>&nbsp;<span class="text-small"><a href="http://www.nisra.gov.uk/census/definitions">definition</a></span>
-		<div class="chart" style="height: 100px;">
-			<ColChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
-		</div>
-		{#if chartLabel && !(overtime && !hasChange)}
-		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
-		{/if}
-	</div>
-	<div>
-		<span class="text-bold">Sex Ratio</span>
+	<div class = "div-grey-box">
+		<span class="text-bold">Households</span>
 		<br/>
-		<span class="text-big">{changeStr(place.data.population.perc['2021'].males / place.data.population.perc['2021'].females * 100)}</span>
-		<span class="text-small">males for every 100 females
 	</div>
-	<div>
+	<div class = "div-grey-box">
+		<span class="text-bold">Sex</span><br/>
+		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div class = "div-grey-box">
 		<span class="text-bold">Broad age bands profile</span><br/>
 		<div class="chart" style="height: 100px;">
 			<ColChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
@@ -271,8 +257,13 @@
 		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
 		{/if}
 	</div>
+	<div class = "div-grey-box">
+		<span class="text-bold">Household size</span><br/>
+		<StackedBarChart data="{place && makeData(['hhsize', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
 	<div style="grid-column: span {cols};">
 		<h3>Explore related areas</h3>
+		Navigate the map and click on other areas to see their statistics
 	</div>
 	<div id="map" style="grid-column: span {cols == 2 ? 2 : cols && cols > 2 ? cols - 1 : 1};">
 		<Map bind:map location={{bounds: place.bounds}} options={{fitBoundsOptions: {padding: 20}}} style={mapStyle}>
@@ -371,13 +362,28 @@
 		</span>
 	</div>
 	<div style="grid-column: span {cols};">
-		<h3>Key stats for {place.name} <span class="title-inset muted">Census 2021</span></h3>
+		<h3>Group 2 Name for {place.name} <span class="title-inset muted">Census 2021</span></h3>
 	</div>
-	<div>
+	<div class = "div-grey-box">
+		<span class="text-bold">National Identity</span><br/>
+		<StackedBarChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div class = "div-grey-box">
+		<span class="text-bold">Country of birth</span><br/>
+		<StackedBarChart data="{place && makeData(['cob', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div class = "div-grey-box">
+		<span class="text-bold">Passport(s) held</span><br/>
+		<StackedBarChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div style="grid-column: span {cols};">
+		<h3>Key Statistics on Language for {place.name} <span class="title-inset muted">Census 2021</span></h3>
+	</div>
+	<div class = "div-grey-box">
 		<span class="text-bold">Main language</span><br/>
 		<StackedBarChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
-	<div>
+	<div class = "div-grey-box">
 		<span class="text-bold">Knowledge of Irish</span><br/>
 		<StackedBarChart data="{place && makeData(['irish', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
@@ -385,29 +391,26 @@
 		<span class="text-bold">Knowledge of Ulster-Scots</span><br/>
 		<StackedBarChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
-	<div>
+	<div style="grid-column: span {cols};">
+		<h3>Group 4 Name for {place.name} <span class="title-inset muted">Census 2021</span></h3>
+	</div>
+	<div class = "div-grey-box">
+		<span class="text-bold">Religion</span><br/>
+		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	</div>
+	<div class = "div-grey-box">
 		<span class="text-bold">Religion or religion brought up in</span><br/>
 		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
-	<div>
-		<span class="text-bold">Country of birth</span><br/>
-		<StackedBarChart data="{place && makeData(['cob', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div>
-		<span class="text-bold">Passport(s) held</span><br/>
-		<StackedBarChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
-	<div>
-		<span class="text-bold">National Identity</span><br/>
-		<StackedBarChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
-	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Ethic group</span><br/>
+		<span class="text-bold">Ethnic group</span><br/>
 		<StackedBarChart data="{place && makeData(['ethnic', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
-	<div class = "div-grey-box">
-		<span class="text-bold">Household size</span><br/>
-		<StackedBarChart data="{place && makeData(['hhsize', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+	<div style="grid-column: span {cols};">
+		<h3>Other places to get Census data<span class="title-inset muted">Census 2021</span></h3>
+		link1
+		link2
+		link3
 	</div>
 </div>
 {/if}
