@@ -18,7 +18,7 @@ export const themes = {
 
 export const urls = {
 	options: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/2021/places_test_expanded_named.csv',
-	places: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/2021/',
+	places: 'https://raw.githubusercontent.com/MaireBrolly/test_jsons/main/loop_jsons/',
 	base: 'https://MaireBrolly.github.io/area-explorer-ni/'
 };
 
@@ -37,67 +37,67 @@ ctry: {name: 'Country', pl: 'Countries'}
 
 export const codes = {
 age: [
-	{code: '0-14 years'},
-	{code: '15-39 years'},
-	{code: '40-64 years'},
-	{code: '65+ years'}	
+	{code: 'a0to14', label: '0-14 years'},
+	{code: 'a15to39', label: '15-39 years'},
+	{code: 'a40to64', label: '40-64 years'},
+	{code: 'a65plus', label: '65+ years'}	
 ],
 cob: [
-	{code: 'ni', label: 'Northern Ireland'},
+	{code: 'northern_ireland', label: 'Northern Ireland'},
 	{code: 'england', label: 'England'},
 	{code: 'scotland', label: 'Scotland'},
 	{code: 'wales', label: 'Wales'},
-	{code: 'roi', label: 'Republic of Ireland'},
-	{code: 'other', label: 'Other country'}			
+	{code: 'republic_of_ireland', label: 'Republic of Ireland'},
+	{code: 'other_cob', label: 'Other country'}			
 ],
 mainlang: [
 	{code: 'english', label: 'English'},
-	{code: 'other', label: 'Other languages'}
+	{code: 'other_languages', label: 'Other languages'}
 ],
 irish: [
-	{code: 'some', label: 'Some ability in Irish'},
-	{code: 'none', label: 'No ability in Irish'}
+	{code: 'some_ability_in_irish', label: 'Some ability in Irish'},
+	{code: 'no_ability_in_irish', label: 'No ability in Irish'}
 ],
 ulster: [
-	{code: 'some', label: 'Some ability in Ulster-Scots'},
-	{code: 'none', label: 'No ability in Ulster-Scots'}
+	{code: 'some_ability_in_ulsterscots', label: 'Some ability in Ulster-Scots'},
+	{code: 'no_ability_in_ulsterscots', label: 'No ability in Ulster-Scots'}
 ],	
 ethnic: [
 	{code: 'white', label: 'White'},
 	{code: 'asian', label: 'Asian'},
 	{code: 'black', label: 'Black'},
 	{code: 'mixed', label: 'Mixed'},
-	{code: 'other', label: 'Other'}
+	{code: 'other_ethnic', label: 'Other'}
 ],	
 natid: [
-	{code: 'british', label: 'British only'},
-	{code: 'irish', label: 'Irish only'},
-	{code: 'nirish', label: 'Northern Irish only'},
-	{code: 'british_irish', label: 'British and Irish only'},
-	{code: 'british_nirish', label: 'British and Northern Irish only'},
-	{code: 'irish_nirish', label: 'Irish and Northern Irish only'},
-	{code: 'british_irish_nirish', label: 'British, Irish and Northern Irish only'},
-	{code: 'other', label: 'Other'}
+	{code: 'british_only', label: 'British only'},
+	{code: 'irish_only', label: 'Irish only'},
+	{code: 'northern_irish_only', label: 'Northern Irish only'},
+	{code: 'british_and_irish_only', label: 'British and Irish only'},
+	{code: 'british_and_northern_irish_only', label: 'British and Northern Irish only'},
+	{code: 'irish_and_northern_irish_only', label: 'Irish and Northern Irish only'},
+	{code: 'british_irish_and_northern_irish_only', label: 'British, Irish and Northern Irish only'},
+	{code: 'other_natid', label: 'Other'}
 ],	
 religion: [
 	{code: 'catholic', label: 'Catholic'},
 	{code: 'protestant', label: 'Protestant and Other Christian (including Christian related)'},
-	{code: 'other', label: 'Other religions'},
+	{code: 'other_religions', label: 'Other religions'},
 	{code: 'none', label: 'None'}
 ],	
 passport: [
-	{code: 'uk', label: 'UK only'},
-	{code: 'ireland', label: 'Ireland only'},
-	{code: 'uk_ireland', label: 'UK and Ireland'},
-	{code: 'other', label: 'Other passport(s)'},
-	{code: 'none', label: 'No passport'}
+	{code: 'united_kingdom_only', label: 'UK only'},
+	{code: 'ireland_only', label: 'Ireland only'},
+	{code: 'united_kingdom_and_ireland_only', label: 'UK and Ireland'},
+	{code: 'other_passports', label: 'Other passport(s)'},
+	{code: 'no_passport', label: 'No passport'}
 ],	
 hhsize: [
-	{code: 'one', label: '1 person'},
-	{code: 'two', label: '2 people'},
-	{code: 'three', label: '3 people'},
-	{code: 'four', label: '4 people'},
-	{code: 'fiveplus', label: '5 or more people'}
+	{code: 'one_person', label: '1 person'},
+	{code: 'two_people', label: '2 people'},
+	{code: 'three_people', label: '3 people'},
+	{code: 'four_people', label: '4 people'},
+	{code: 'five_people', label: '5 or more people'}
 ],	
 population: [
 	{code: 'females'},
