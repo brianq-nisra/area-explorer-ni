@@ -85,6 +85,12 @@ religion: [
 	{code: 'other_religions', label: 'Other religions'},
 	{code: 'none', label: 'None'}
 ],	
+religion_or_brought_up: [
+	{code: 'catholic', label: 'Catholic'},
+	{code: 'protestant', label: 'Protestant and Other Christian (including Christian related)'},
+	{code: 'other_religions', label: 'Other religions'},
+	{code: 'none', label: 'None'}
+],	
 passport: [
 	{code: 'united_kingdom_only', label: 'UK only'},
 	{code: 'ireland_only', label: 'Ireland only'},
@@ -99,9 +105,12 @@ hhsize: [
 	{code: 'four_people', label: '4 people'},
 	{code: 'five_people', label: '5 or more people'}
 ],	
+households: [
+	{code: 'all_households'}
+],
 population: [
-	{code: 'females'},
-	{code: 'males'}
+	{code: 'females', label: 'Females'},
+	{code: 'males', label: 'Males'}
 ]
 };
 

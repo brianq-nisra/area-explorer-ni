@@ -50,6 +50,7 @@
 	import Map from "$lib/map/Map.svelte";
 	import MapSource from "$lib/map/MapSource.svelte";
 	import MapLayer from "$lib/map/MapLayer.svelte";
+	import GroupChart from "$lib/chart/GroupChart.svelte";
 
 	export let options, place, ew;
 	
@@ -188,20 +189,17 @@
 	</div>
 	<div>
 		<div style="width: 260px; padding-top: 5px;" class:float-right={cols > 1}>
-		<Select {options} group="typestr" search={true} on:select="{menuSelect}"/>
+			<b>Search</b> for your Local Government District (enter town or area name).
+			<Select {options} group="typestr" search={true} on:select="{menuSelect}"/>
 		</div>
-	</div>
-	<div class="text-small" style="width: 200px; text-align: left">
-		<b>Note:</b> Whilst settlements are searchable, there are no specific areas profiles for them.
-		<br> The Local Government District of that settlement will be shown instead.
 	</div>
 </div>
 
 
 <div class="grid mts">
-	<div class="text-small">
-		Comparison:
-		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>Northern Ireland</button>
+	<div class="text-bold">
+		Click to:
+		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>Compare to Northern Ireland</button>
 		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Compare to 2011 Census</button>
 	</div>
 </div>
@@ -240,13 +238,13 @@
 	</div>
 	<div class = "div-grey-box">
 		<h3 style="margin: 0;">Households</h3>
-		<span class="text-big" style="font-size: 2.8em;">{place.data.households.value['2021'].all.toLocaleString()}</span><br/>
+		<span class="text-big" style="font-size: 2.8em;">{place.data.households.value['2021'].all_households.toLocaleString()}</span><br/>
 		{#if !overtime}
 		{#if place.type != 'ew'}
-		<span class="text-small"><Em>{place.data.households.value['2021'].all / ew.data.households.value['2021'].all >= 0.001 ? ((place.data.households.value['2021'].all / ew.data.households.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland households</span>
+		<span class="text-small"><Em>{place.data.households.value['2021'].all_households / ew.data.households.value['2021'].all_households >= 0.001 ? ((place.data.households.value['2021'].all_households / ew.data.households.value['2021'].all_households) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland households</span>
 		{/if}
 		{:else if hasChange}
-		<span class="text-small"><Em><span class="{changeClass(place.data.households.value.change.all)}">{changeStr(place.data.households.value.change.all, '%', 1)}</span></Em> since 2011 Census</span>
+		<span class="text-small"><Em><span class="{changeClass(place.data.households.value.change.all_households)}">{changeStr(place.data.households.value.change.all_households, '%', 1)}</span></Em> since 2011 Census</span>
 		{/if}
 	</div>
 	<div class = "div-grey-box">
@@ -268,7 +266,6 @@
 	</div>
 	<div style="grid-column: span {cols};">
 		<h3>Explore related areas</h3>
-		Navigate the map and click on other areas to see their statistics
 	</div>
 	<div id="map" style="grid-column: span {cols == 2 ? 2 : cols && cols > 2 ? cols - 1 : 1};">
 		<Map bind:map location={{bounds: place.bounds}} options={{fitBoundsOptions: {padding: 20}}} style={mapStyle}>
@@ -343,23 +340,21 @@
 		</Map>
 	</div>
 	<div>
-		<span class="text-bold">Parents of {place.name}</span><br/>
 		<span>
 		{#if place.parents[0]}
+		<span class="text-bold">{place.name} is located in </span>
 		{#each [...place.parents].reverse() as parent, i}
 		<span style="display: block; margin-left: {i > 0 ? (i - 1) * 15 : 0}px">{@html i > 0 ? '↳ ' : ''}<a href="{base}/{parent.code}/" sveltekit:noscroll>{parent.name}</a></span>
 		{/each}
-		{:else}
-		<span class="muted">No parents for {place.name}</span>
 		{/if}
 		</span>
 	</div>
 	<div>
-		<span class="text-bold">{place.children[0] ? types[place.children[0].type].pl : 'Areas'} within {place.name}</span><br/>
 		<span>
-		{#if place.children[0]}
-		{#each place.children as child, i}
-		<a href="{base}/{child.code}/" sveltekit:noscroll>{child.name}</a>{ i < place.children.length - 1 ? ', ' : ''}
+		{#if ew.children[0]}
+		<span class="text-bold">Districts within Northern Ireland</span><br/>
+		{#each ew.children as child, i}
+		<a href="{base}/{child.code}/" sveltekit:noscroll>{child.name}</a>{ i < ew.children.length - 1 ? '; ' : ''}
 		{/each}
 		{:else}
 		<span class="muted">No areas within {place.name}</span>
@@ -370,7 +365,7 @@
 		<h2>Nationality Statistics for {place.name} <span class="title-inset muted">Census 2021</span></h2>
 	</div>
 	<div class = "div-grey-box">
-		<h3 style="margin: 0;">National Identity</h3><br/>
+		<h3 style="margin: 0;">National identity</h3><br/>
 		<StackedBarChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
@@ -405,7 +400,7 @@
 	</div>
 	<div class = "div-grey-box">
 		<h3 style="margin: 0;">Religion brought up in</h3><br/>
-		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
+		<StackedBarChart data="{place && makeData(['religion_or_brought_up', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
 		<h3 style="margin: 0;">Ethnic group</h3><br/>
