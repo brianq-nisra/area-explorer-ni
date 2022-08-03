@@ -198,7 +198,7 @@
 	<div class="text-small">
 		Comparison:
 		<button class="btn" class:btn-active={!overtime} on:click={() => overtime = false}>Northern Ireland</button>
-		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Compare to 2011</button>
+		<button class="btn" class:btn-active={overtime} on:click={() => overtime = true}>Compare to 2011 Census</button>
 	</div>
 </div>
 
@@ -230,7 +230,7 @@
 		{/if}
 		{/if}
 		{:else if hasChange}
-		<span class="text-small"><Em><span class="{changeClass(place.data.population.value.change.all)}">{changeStr(place.data.population.value.change.all, '%', 1)}</span></Em> since 2011</span>
+		<span class="text-small"><Em><span class="{changeClass(place.data.population.value.change.all)}">{changeStr(place.data.population.value.change.all, '%', 1)}</span></Em> since 2011 Census</span>
 		{#if !['ew', 'ctry'].includes(place.type)}
 		<div class="text-small muted">{place.data.population.value_rank.change.all.toLocaleString()}{suffixer(place.data.population.value_rank.change.all)} largest increase of {place.count.toLocaleString()} {types[place.type].pl.toLowerCase()}</div>
 		{/if}
@@ -239,6 +239,14 @@
 	<div class = "div-grey-box">
 		<span class="text-bold">Households</span>
 		<br/>
+		<span class="text-big">{place.data.households.value['2021'].all.toLocaleString()}</span><br/>
+		{#if !overtime}
+		{#if place.type != 'ew'}
+		<span class="text-small"><Em>{place.data.households.value['2021'].all / ew.data.households.value['2021'].all >= 0.001 ? ((place.data.households.value['2021'].all / ew.data.households.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland households</span>
+		{/if}
+		{:else if hasChange}
+		<span class="text-small"><Em><span class="{changeClass(((place.data.households.value['2021'].all / place.data.households.value['2011'].all) )*100)}">{changeStr((place.data.households.value['2021'].all / place.data.households.value['2011'].all )*100, '%', 1)}</span></Em> since 2011 Census</span>
+		{/if}
 	</div>
 	<div class = "div-grey-box">
 		<span class="text-bold">Sex</span><br/>

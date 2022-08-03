@@ -35,7 +35,7 @@
 		<div class="bullet" class:round style="background-color: {colors[i]}"/>
 		{item[xKey]} {toPerc(item[yKey])}
 		{#if zKey == "prev"}
-		<span class="" style="color: #801650; font-weight: bold">(2011 </span><span class="{changeClass(Math.round(item[yKey] - item[zKey]))}" >{changeStr(Math.round(item[yKey] - item[zKey]), 'pp')}</span><span class="" style="color: #801650; font-weight: bold">)</span>
+		<span class="" style="color: #801650; font-weight: bold">(2011 {changeStr(Math.round(item[zKey]), '%)')}</span>
 		{:else if zKey}
 		<span class="" style="color: #801650; font-weight: bold">(NI {toPerc(item[zKey])})</span>
 		{/if}
