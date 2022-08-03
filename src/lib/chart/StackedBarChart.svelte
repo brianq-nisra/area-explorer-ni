@@ -51,6 +51,7 @@
 		font-size: 1em;
 		color: white;
 		opacity: 1;
+		line-height: 1.2;
 	}
 	.label:hover {
 		opacity: 1;

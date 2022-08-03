@@ -37,10 +37,10 @@ ctry: {name: 'Country', pl: 'Countries'}
 
 export const codes = {
 age: [
-	{code: 'a0to14', label: '0-14 years'},
-	{code: 'a15to39', label: '15-39 years'},
-	{code: 'a40to64', label: '40-64 years'},
-	{code: 'a65plus', label: '65+ years'}	
+	{code: 'a0to14', label: '0-14'},
+	{code: 'a15to39', label: '15-39'},
+	{code: 'a40to64', label: '40-64'},
+	{code: 'a65plus', label: '65+'}	
 ],
 cob: [
 	{code: 'northern_ireland', label: 'Northern Ireland'},

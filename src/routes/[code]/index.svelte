@@ -210,7 +210,7 @@
 	<div style="grid-column: span {cols};">
 		<h3>Census 2021</h3>
 	</div>
-	<div class = "div-grey-box">
+	<div class = "div-grey-box" style="line-height: 1.2;">
 		<span class="text-bold">Overview</span>
 		<br/>
 		{#if place.type == 'ew' || place.type =='ctry'}
@@ -257,7 +257,7 @@
 		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Broad age bands profile</span><br/>
+		<span class="text-bold">Broad age bands (years)</span><br/>
 		<div class="chart" style="height: 100px;">
 			<ColChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
 		</div>
@@ -432,7 +432,12 @@
 		margin-top: 8px;
 	}
 	.div-grey-box {
-        background-color: #EBEBEB;
+    	line-height: 1.78;
+    	overflow: hidden;
+    	box-shadow: 0 2px #4140424d;
+    	background-color: #f5f5f6;
+    	padding: 16px 16px;
+		
     }
 	.btn {
 		padding: 2px 4px;
