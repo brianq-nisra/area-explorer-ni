@@ -208,11 +208,10 @@
 
 <div id="grid" class="grid mt" bind:clientWidth={w}>
 	<div style="grid-column: span {cols};">
-		<h3>Census 2021</h3>
+		<h2>Census 2021</h2>
 	</div>
-	<div class = "div-grey-box" style="line-height: 1.2;">
-		<span class="text-bold">Overview</span>
-		<br/>
+	<div class = "div-grey-box" style="line-height: 1.3;">
+		<h3 style="margin: 0 0 10px 0; line-height: 1.78;">Overview</h3>
 		{#if place.type == 'ew' || place.type =='ctry'}
 			The population of {place.name} was {place.data.population.value['2021'].all.toLocaleString()} at the time of the 2021 Census.
 			{:else}
@@ -223,9 +222,8 @@
 			{/if}
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Population</span>
-		<br/>
-		<span class="text-big">{place.data.population.value['2021'].all.toLocaleString()}</span><br/>
+		<h3 style="margin: 0;">Population</h3>
+		<span class="text-big" style="font-size: 2.8em;">{place.data.population.value['2021'].all.toLocaleString()}</span><br/>
 		{#if !overtime}
 		{#if place.type != 'ew'}
 		<span class="text-small"><Em>{place.data.population.value['2021'].all / ew.data.population.value['2021'].all >= 0.001 ? ((place.data.population.value['2021'].all / ew.data.population.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland population</span>
@@ -241,9 +239,8 @@
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Households</span>
-		<br/>
-		<span class="text-big">{place.data.households.value['2021'].all.toLocaleString()}</span><br/>
+		<h3 style="margin: 0;">Households</h3>
+		<span class="text-big" style="font-size: 2.8em;">{place.data.households.value['2021'].all.toLocaleString()}</span><br/>
 		{#if !overtime}
 		{#if place.type != 'ew'}
 		<span class="text-small"><Em>{place.data.households.value['2021'].all / ew.data.households.value['2021'].all >= 0.001 ? ((place.data.households.value['2021'].all / ew.data.households.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland households</span>
@@ -253,11 +250,11 @@
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Sex</span><br/>
+		<h3 style="margin: 0;">Sex</h3><br/>
 		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Broad age bands (years)</span><br/>
+		<h3 style="margin: 0;">Broad age bands (years)</h3><br/>
 		<div class="chart" style="height: 100px;">
 			<ColChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
 		</div>
@@ -266,7 +263,7 @@
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Household size</span><br/>
+		<h3 style="margin: 0;">Household size</h3><br/>
 		<StackedBarChart data="{place && makeData(['hhsize', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div style="grid-column: span {cols};">
@@ -347,7 +344,7 @@
 	</div>
 	<div>
 		<span class="text-bold">Parents of {place.name}</span><br/>
-		<span class="text-small">
+		<span>
 		{#if place.parents[0]}
 		{#each [...place.parents].reverse() as parent, i}
 		<span style="display: block; margin-left: {i > 0 ? (i - 1) * 15 : 0}px">{@html i > 0 ? '↳ ' : ''}<a href="{base}/{parent.code}/" sveltekit:noscroll>{parent.name}</a></span>
@@ -359,7 +356,7 @@
 	</div>
 	<div>
 		<span class="text-bold">{place.children[0] ? types[place.children[0].type].pl : 'Areas'} within {place.name}</span><br/>
-		<span class="text-small">
+		<span>
 		{#if place.children[0]}
 		{#each place.children as child, i}
 		<a href="{base}/{child.code}/" sveltekit:noscroll>{child.name}</a>{ i < place.children.length - 1 ? ', ' : ''}
@@ -370,55 +367,55 @@
 		</span>
 	</div>
 	<div style="grid-column: span {cols};">
-		<h3>Group 2 Name for {place.name} <span class="title-inset muted">Census 2021</span></h3>
+		<h2>Nationality Statistics for {place.name} <span class="title-inset muted">Census 2021</span></h2>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">National Identity</span><br/>
+		<h3 style="margin: 0;">National Identity</h3><br/>
 		<StackedBarChart data="{place && makeData(['natid', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Country of birth</span><br/>
+		<h3 style="margin: 0;">Country of birth</h3><br/>
 		<StackedBarChart data="{place && makeData(['cob', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Passport(s) held</span><br/>
+		<h3 style="margin: 0;">Passport(s) held</h3><br/>
 		<StackedBarChart data="{place && makeData(['passport', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div style="grid-column: span {cols};">
-		<h3>Key Statistics on Language for {place.name} <span class="title-inset muted">Census 2021</span></h3>
+		<h2>Language Statistics for {place.name} <span class="title-inset muted">Census 2021</span></h2>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Main language</span><br/>
+		<h3 style="margin: 0;">Main language</h3><br/>
 		<StackedBarChart data="{place && makeData(['mainlang', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Knowledge of Irish</span><br/>
+		<h3 style="margin: 0;">Knowledge of Irish</h3><br/>
 		<StackedBarChart data="{place && makeData(['irish', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Knowledge of Ulster-Scots</span><br/>
+		<h3 style="margin: 0; font-size: 1.35em;">Knowledge of Ulster-Scots</h3><br/>
 		<StackedBarChart data="{place && makeData(['ulster', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div style="grid-column: span {cols};">
-		<h3>Group 4 Name for {place.name} <span class="title-inset muted">Census 2021</span></h3>
+		<h2>Religion and Ethnicity Statistics for {place.name} <span class="title-inset muted">Census 2021</span></h2>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Religion</span><br/>
+		<h3 style="margin: 0;">Religion</h3><br/>
 		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Religion or religion brought up in</span><br/>
+		<h3 style="margin: 0;">Religion brought up in</h3><br/>
 		<StackedBarChart data="{place && makeData(['religion', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<span class="text-bold">Ethnic group</span><br/>
+		<h3 style="margin: 0;">Ethnic group</h3><br/>
 		<StackedBarChart data="{place && makeData(['ethnic', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div style="grid-column: span {cols};">
-		<h3>Other places to get Census data<span class="title-inset muted">Census 2021</span></h3>
-		link1
-		link2
-		link3
+		<h3>Further Census Resources</h3><br/>
+			<a href="https://www.nidirect.gov.uk" class="link"><u>Link1</u></a><br/>
+			<a href="https://www.nidirect.gov.uk" class="link"><u>Link2</u></a><br/>
+			<a href="https://www.nidirect.gov.uk" class="link"><u>Link3</u></a><br/>
 	</div>
 </div>
 {/if}
