@@ -191,6 +191,10 @@
 		<Select {options} group="typestr" search={true} on:select="{menuSelect}"/>
 		</div>
 	</div>
+	<div class="text-small" style="width: 200px; text-align: left">
+		<b>Note:</b> Whilst settlements are searchable, there are no specific areas profiles for them.
+		<br> The Local Government District of that settlement will be shown instead.
+	</div>
 </div>
 
 
