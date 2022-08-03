@@ -249,7 +249,7 @@
 		<span class="text-small"><Em>{place.data.households.value['2021'].all / ew.data.households.value['2021'].all >= 0.001 ? ((place.data.households.value['2021'].all / ew.data.households.value['2021'].all) * 100).toFixed(1) : '<0.1'}%</Em> of Northern Ireland households</span>
 		{/if}
 		{:else if hasChange}
-		<span class="text-small"><Em><span class="{changeClass(((place.data.households.value['2021'].all / place.data.households.value['2011'].all) )*100)}">{changeStr((place.data.households.value['2021'].all / place.data.households.value['2011'].all )*100, '%', 1)}</span></Em> since 2011 Census</span>
+		<span class="text-small"><Em><span class="{changeClass(place.data.households.value.change.all)}">{changeStr(place.data.households.value.change.all, '%', 1)}</span></Em> since 2011 Census</span>
 		{/if}
 	</div>
 	<div class = "div-grey-box">
