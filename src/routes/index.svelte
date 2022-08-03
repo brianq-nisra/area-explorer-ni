@@ -19,8 +19,8 @@
 
 <Section column="wide">
   <div class="block">
-    <span class="text-big title">Area Explorer</span>
-    <p>Select Northern Ireland or a Local Government District to start exploring</p>
+    <span class="text-big title">Area Explorer</span>  <span class="text-small">Dev Version 2</span>
+    <p>Select Northern Ireland or a Local Government District to start exploring 2021 Census data</p>
     <ul>
       <li><a href="{base}/N92000001"><strong>Northern Ireland</strong></a></li>
       <ul>
@@ -37,6 +37,9 @@
           <li><a href="{base}/N09000011">Ards and North Down</a></li>
        </ul>
     </ul>
+
+  
+
   </div>
 </Section>
 
