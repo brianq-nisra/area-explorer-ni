@@ -498,7 +498,7 @@
 		color: grey;
 	}
 	.line {
-		background-color: #C11B71;
+		background-color: #CEDC20;
 		width: 25px;
   	height: 4px;
   	display: inline-block;

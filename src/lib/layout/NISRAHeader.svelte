@@ -5,23 +5,34 @@
 	  export let theme = getContext('theme');
 	  export let filled = true;
 	  export let center = false;
-  </script>
+</script>
   
-  <nav style="border-bottom-color: {theme['muted']}; {filled ? 'background-color: ' +  theme['background'] + ';' : ''}">
-	<div class="col-wide middle" class:center>
-		  <a href="https://www.nisra.gov.uk/">
-			  <picture>
-				  {#if theme.name == 'dark'}
-				  <img src="{assets}/img/nisra-full-name-stacked-white.svg" alt="Northern Ireland Statistics and Research Agency">
-				  {:else if filled == true}
-				  <img src="{assets}/img/nisra-full-name-stacked-colour.svg" alt="Northern Ireland Statistics and Research Agency">
-				  {:else}
-				  <img src="{assets}/img/nisra-full-name-stacked-colour.svg" alt="Northern Ireland Statistics and Research Agency">
-				  {/if}
-			  </picture>
-		  </a>
-	</div>
-  </nav>
+	<nav style="border-bottom-color: {theme['muted']}; {filled ? 'background-color: ' +  theme['background'] + ';' : ''}">
+		<div class="col-wide left" style="flex-direction: row; -ms-flex-direction: row;" class:center>
+			<a href="https://www.nisra.gov.uk/">
+				<picture>
+					{#if theme.name == 'dark'}
+					<img src="{assets}/img/nisra-only-white.svg" alt="Northern Ireland Statistics and Research Agency">
+					{:else if filled == true}
+					<img src="{assets}/img/nisra-only.svg" alt="Northern Ireland Statistics and Research Agency">
+					{:else}
+					<img src="{assets}/img/nisra-only.svg" alt="Northern Ireland Statistics and Research Agency">
+					{/if}
+				</picture>
+			</a>
+			<a href="https://census.gov.uk/">
+				<picture>
+					{#if theme.name == 'dark'}
+					<img src="{assets}/img/census-2021-logo-white.svg" alt="Census 2021">
+					{:else if filled == true}
+					<img src="{assets}/img/census-2021-logo-colour.svg" alt="Census 2021">
+					{:else}
+					<img src="{assets}/img/census-2021-logo-colour.svg" alt="Census 2021">
+					{/if}
+				</picture>
+			</a>	  
+		</div>
+	</nav>
   
   <style>
 	  nav {
@@ -35,11 +46,11 @@
 	  }
 	  picture {
 		  position: relative;
-		  top: 0px;
-		  padding: 10px 2px;
+		  top: 12px;
+		  padding: 10px 12px;
 	  }
 	  img {
-		  width: 120px;
+		  width: 110px;
 	  }
 	  a img:hover {
 		  cursor: pointer;
