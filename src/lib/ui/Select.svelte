@@ -198,7 +198,7 @@
 		width: 30px;
 	}
 	.search {
-		background-image: url("{assets}/img/search.svg");
+		background-image: url("./img/search.svg");
 		width: 30px;
 	}
 	.close {

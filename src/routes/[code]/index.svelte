@@ -273,7 +273,15 @@
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<h3 style="margin: 0;">Households</h3>
+		<div class="row" style="display: flex; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#households-info" aria-expanded="false" aria-controls="households-info">
+			<div class="blocktitle" style="margin: 0; width: 100%">Households</div>
+			<div class="blockinfoicon">&#x1F6C8;</div>
+		</div>
+		<div class="collapse" id="households-info">
+			<div class="card card-body">
+			Description of households variable that crosses more than one line <!-- definition of households -->
+			</div>
+		</div>
 		<span class="text-big" style="font-size: 2.8em;">{place.data.households.value['2021'].all_households.toLocaleString()}</span><br/>
 		{#if !overtime}
 		{#if place.type != 'ew'}
@@ -284,20 +292,58 @@
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<h3 style="margin: 0;">Broad age bands (years)</h3><br/>
-		<div class="chart" style="height: 100px;">
+
+		<div class="row" style="display: flex; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#broadagebands-info" aria-expanded="false" aria-controls="broadagebands-info">
+			<div class="blocktitle" style="margin: 0; width: 100%">Broad age bands (years)</div>
+			<div class="blockinfoicon">&#x1F6C8;</div>
+		</div>
+		<div class="collapse" id="broadagebands-info">
+			<div class="card card-body">
+			Description of broadagebands-info variable that crosses more than one line <!-- definition of broadagebands-info -->
+			</div>
+		</div>
+
+
+		
+		<div class="chart" style="height: 100px; padding-top:15pt">
 			<ColChart data="{place && makeData(['age', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}"/>
 		</div>
 		{#if chartLabel && !(overtime && !hasChange)}
-		<div class="text-small muted"><li class="line"></li> {chartLabel}</div>
+		<br><div class="text-small muted"><li class="line"></li> {chartLabel}</div>
 		{/if}
 	</div>
 	<div class = "div-grey-box">
-		<h3 style="margin: 0;">Sex</h3><br/>
+		
+		<div class="row" style="display: flex; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#sex-info" aria-expanded="false" aria-controls="sex-info">
+			<div class="blocktitle" style="margin: 0; width: 100%">Sex</div>
+			<div class="blockinfoicon">&#x1F6C8;</div>
+		</div>
+		<div class="collapse" id="sex-info">
+			<div class="card card-body">
+			Description of sex-info variable that crosses more than one line <!-- definition of sex-info -->
+			</div>
+		</div>
+		<br>
+
+
+
 		<StackedBarChart data="{place && makeData(['population', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div class = "div-grey-box">
-		<h3 style="margin: 0;">Household size</h3><br/>
+		
+		<div class="row" style="display: flex; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#householdsize-info" aria-expanded="false" aria-controls="householdsize-info">
+			<div class="blocktitle" style="margin: 0; width: 100%">Household size</div>
+			<div class="blockinfoicon">&#x1F6C8;</div>
+		</div>
+		<div class="collapse" id="householdsize-info">
+			<div class="card card-body">
+			Description of householdsize-info variable that crosses more than one line <!-- definition of householdsize-info -->
+			</div>
+		</div>
+		<br>
+
+
+
 		<StackedBarChart data="{place && makeData(['hhsize', 'perc', '2021'])}" zKey="{overtime && hasChange ? 'prev' : !overtime && place.type != 'ew' ? 'ew' : null}" label={chartLabel}/>
 	</div>
 	<div style="grid-column: span {cols};">
@@ -554,4 +600,94 @@
 		grid-row: span 2;
 		min-height: 400px;
 	}
+
+	.tooltip {
+		position: relative;
+		display: inline-block;
+	}
+
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: 120px;
+		background-color: #666666;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		bottom: 100%;
+		right: 100%;
+		font-size: 12pt;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+	}
+
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+	}
+
+.collapse:not(.show){
+    display:none
+}
+.collapsing{
+    height:0;
+    overflow:hidden;
+    transition:height .35s ease
+}
+
+	.show{
+		display:block!important;
+	}
+
+	.card{
+    --bs-card-spacer-y:0.1rem;
+    --bs-card-spacer-x:0.5rem;
+    --bs-card-title-spacer-y:0.5rem;
+    --bs-card-border-width:1px;
+    --bs-card-border-color:var(--bs-border-color-translucent);
+    --bs-card-border-radius:0.375rem;
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius:calc(0.375rem - 1px);
+    --bs-card-cap-padding-y:0.5rem;
+    --bs-card-cap-padding-x:1rem;
+    --bs-card-cap-bg:rgba(0, 0, 0, 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg:#fff;
+    --bs-card-img-overlay-padding:1rem;
+    --bs-card-group-margin:0.75rem;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    height:var(--bs-card-height);
+    word-wrap:break-word;
+    background-color:var(--bs-card-bg);
+    background-clip:border-box;
+    border:var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius:var(--bs-card-border-radius)
+}
+
+.card-body{
+    flex:1 1 auto;
+    padding:var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color:var(--bs-card-color);
+	font-size: 10pt;
+}
+
+
+
+	.blocktitle {
+	font-size: 1.3em;
+	margin: 40px 0 -10px 0;
+	font-weight: bold;
+}
+
+	.blockinfoicon {
+		font-size: 14pt;
+	}
+
+
 	</style>
