@@ -604,7 +604,6 @@
 		grid-row: span 2;
 		min-height: 400px;
 	}
-<<<<<<< HEAD
 
 	.tooltip {
 		position: relative;
@@ -695,12 +694,11 @@
 	}
 
 
-=======
+
 	@media print {
 		.highlited {
 			color: red !important;
 			-webkit-print-color-adjust: exact;
   		}
 	}
->>>>>>> 61aa3d07ed542febe09004e8f4cf8aa18fdc740b
 	</style>
