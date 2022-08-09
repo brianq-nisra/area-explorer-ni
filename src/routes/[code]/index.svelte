@@ -194,7 +194,7 @@
 			<!-- <a href="#" onclick="window.print();return false;" title="Click to print this page">Print this page</a> -->
 			<!-- <button onclick="window.print();">Print</button> -->
 			<!-- Option with an image instead of link -->
-			<a href="#" onclick="window.print();return false;" title="Click to print this page"><img style="width:30px; padding-top:5px; float: right;" src="/img/print-solid.svg" alt="Click to Print"/></a>
+			<a href="#" onclick="window.print();return false;" title="Click to print this page"><img style="width:30px; padding-top:5px; float: right;" src="{base}/img/print-solid.svg" alt="Click to Print"/></a>
 		</div>
 	</div>
 </div>

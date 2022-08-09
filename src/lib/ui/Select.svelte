@@ -202,7 +202,7 @@
 		width: 30px;
 	}
 	.close {
-		background-image: url("{assets}/img/x-close.svg");
+		background-image: url("./img/x-close.svg");
 		width: 30px;
 	}
 	small {
