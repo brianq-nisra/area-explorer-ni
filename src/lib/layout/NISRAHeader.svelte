@@ -21,7 +21,7 @@
 				</picture>
 			</a>
 			<a href="https://census.gov.uk/">
-				<picture>
+				<picture style="float: right; top: 0px;">
 					{#if theme.name == 'dark'}
 					<img src="{assets}/img/census-2021-logo-white.svg" alt="Census 2021">
 					{:else if filled == true}
