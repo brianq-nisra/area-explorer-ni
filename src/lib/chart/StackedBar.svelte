@@ -19,11 +19,12 @@
 </script>
 
 {#if sum && breaks}
-<div class="stack">
+
+<svg class="stack">
 	{#each data as row, i}
-	<div class="cell" style="left: {(breaks[i] / sum) * 100}%; width: {(row[yKey] / sum) * 100}%; background-color: {colors[i]};"/>
+	<rect class="cell" x={(breaks[i] / sum) * 100}% style="width: {(row[yKey] / sum) * 100}%; fill: {colors[i]}"/>
 	{/each}
-</div>
+</svg>
 {/if}
 
 <style>
